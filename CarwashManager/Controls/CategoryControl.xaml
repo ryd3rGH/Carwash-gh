@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="CarwashManager.Controls.CategoryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarwashManager.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="300" HorizontalAlignment="Stretch" Height="70" Margin="1, 2.5, 1, 2.5">
+    <Grid>
+        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" StrokeThickness="0.8" RadiusX="3" RadiusY="3" Fill="#8CCBCBCB">
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF383838"/>
+                    <GradientStop Color="#FFA4A4A4" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+        <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">            
+            <DockPanel DockPanel.Dock="Right" Width="40" HorizontalAlignment="Right">
+                <Button x:Name="updateBtn" DockPanel.Dock="Top" Margin="5,3,5,3" Height="30" Content="UPD" Click="updateBtn_Click"></Button>
+                <Button x:Name="delBtn" DockPanel.Dock="Bottom" Margin="5,0,5,3" Content="DEL" Click="delBtn_Click"></Button>
+            </DockPanel>
+            <Label x:Name="catNameLbl" HorizontalAlignment="Stretch" VerticalAlignment="Top" DockPanel.Dock="Top" Height="32"></Label>
+            <Label Height="32" DockPanel.Dock="Left" Content="Классы:" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,5,5"></Label>
+            <WrapPanel x:Name="classesPanel" Orientation="Vertical"></WrapPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>

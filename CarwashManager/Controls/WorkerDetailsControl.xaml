@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="CarwashManager.Controls.WorkerDetailsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarwashManager.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="509" d:DesignWidth="830" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.9*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Ф.И.О.:" Grid.Row="1" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="2" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="E-mail:" Grid.Row="3" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Дата рождения:" Grid.Row="4" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Серия паспорта:" Grid.Row="5" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Номер:" Grid.Row="5" Grid.Column="2"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Дата:" Grid.Row="5" Grid.Column="4"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Адрес регистрации:" Grid.Row="6" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Фактический адрес:" Grid.Row="7" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Группа работников:" Grid.Row="8" Grid.Column="0"/>
+        <TextBlock x:Name="nameTxt" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="phoneTxt" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="emailTxt" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="bDateTxt" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="psTxt" Grid.Row="5" Grid.Column="1" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="pnTxt" Grid.Row="5" Grid.Column="3" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="pDateTxt" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="raTxt" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="faTxt" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="groupTxt" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,5,0,0" FontSize="14" VerticalAlignment="Top"/>
+        <StackPanel Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="2" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,10,13,10">
+            <Button x:Name="deleteWorkerBtn" Content="Удалить" Width="100" Height="32" IsCancel="True" FontSize="14" Click="deleteWorkerBtn_Click"/>
+            <Button x:Name="updateWorkerBtn" Content="Изменить" Width="100" Height="32" Margin="10,0,0,0" FontSize="14" IsDefault="True" Click="updateWorkerBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

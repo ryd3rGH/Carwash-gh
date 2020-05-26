@@ -1,0 +1,24 @@
+﻿<Window x:Class="CarwashManager.Windows.NewClientsGroupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarwashManager.Windows"
+        mc:Ignorable="d"
+        Title="NewClientsGroupWindow" Height="250" Width="445" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid x:Name="mainGrid">
+        <Label Content="Добавление новой группы клиентов" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Grid Margin="0,45,0,50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="129*"/>
+                <ColumnDefinition Width="319*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Название: " HorizontalAlignment="Right" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="78"/>
+            <Label Content="Размер скидки: " HorizontalAlignment="Right" Margin="0,70,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="110"/>
+            <TextBox x:Name="groupNameTxt" FontSize="14" Grid.Column="1" HorizontalAlignment="Left" Margin="20,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="25"/>
+            <Slider Name="discSlider" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20, 75,20,0" Minimum="0" Maximum="100" Value="0" TickFrequency="1" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" IsSnapToTickEnabled="True"/>
+        </Grid>
+        <Button x:Name="cancelBtn" Content="Отмена" FontSize="14" HorizontalAlignment="Right" Margin="0,0,20,15" VerticalAlignment="Bottom" IsCancel="True" Width="85" Height="30"/>
+        <Button x:Name="addBtn" Content="Добавить" FontSize="14" HorizontalAlignment="Right" Margin="0,0,122,15" VerticalAlignment="Bottom" IsDefault="True" Width="85" Height="30" Click="addBtn_Click"/>
+    </Grid>
+</Window>

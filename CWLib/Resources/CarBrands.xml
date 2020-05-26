@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CarBrands>
+  <Carmake BrandId="1" Name="Audi" />
+  <Carmake BrandId="2" Name="BMW" />
+  <Carmake BrandId="3" Name="Acura" />
+  <Carmake BrandId="4" Name="Subaru" />
+  <Carmake BrandId="5" Name="Mitsubishi" />
+  <Carmake BrandId="7" Name="AC Cars Ltd " />
+  <Carmake BrandId="8" Name="Alfa Romeo" />
+  <Carmake BrandId="9" Name="Aston Martin" />
+  <Carmake BrandId="10" Name="BYD" />
+  <Carmake BrandId="11" Name="Bentley" />
+  <Carmake BrandId="12" Name="Brilliance" />
+  <Carmake BrandId="13" Name="Bugatti" />
+  <Carmake BrandId="14" Name="Buick" />
+  <Carmake BrandId="15" Name="Cadillac" />
+  <Carmake BrandId="16" Name="Caterham" />
+  <Carmake BrandId="17" Name="Changan" />
+  <Carmake BrandId="18" Name="Chery" />
+  <Carmake BrandId="19" Name="Chevrolet" />
+  <Carmake BrandId="21" Name="Chrysler" />
+  <Carmake BrandId="22" Name="Citroen" />
+  <Carmake BrandId="23" Name="Dacia" />
+  <Carmake BrandId="24" Name="Daewoo" />
+  <Carmake BrandId="25" Name="Daihatsu" />
+  <Carmake BrandId="26" Name="Datsun" />
+  <Carmake BrandId="27" Name="Dodge" />
+  <Carmake BrandId="28" Name="DongFeng" />
+  <Carmake BrandId="29" Name="FAW" />
+  <Carmake BrandId="30" Name="BAW" />
+  <Carmake BrandId="31" Name="Ferrari" />
+  <Carmake BrandId="32" Name="Fiat" />
+  <Carmake BrandId="33" Name="Ford" />
+  <Carmake BrandId="34" Name="Foton" />
+  <Carmake BrandId="35" Name="GAC Gonow" />
+  <Carmake BrandId="36" Name="GMC" />
+  <Carmake BrandId="37" Name="Geely" />
+  <Carmake BrandId="38" Name="Great Wall" />
+  <Carmake BrandId="39" Name="Hafei" />
+  <Carmake BrandId="40" Name="Haima" />
+  <Carmake BrandId="41" Name="Haval" />
+  <Carmake BrandId="42" Name="Hawtai" />
+  <Carmake BrandId="43" Name="Hino" />
+  <Carmake BrandId="44" Name="Holden" />
+  <Carmake BrandId="45" Name="Honda" />
+  <Carmake BrandId="46" Name="HuangHai" />
+  <Carmake BrandId="47" Name="Hummer" />
+  <Carmake BrandId="48" Name="Hyundai" />
+  <Carmake BrandId="49" Name="Iveco" />
+  <Carmake BrandId="50" Name="Infiniti " />
+  <Carmake BrandId="51" Name="Iran Khodro" />
+  <Carmake BrandId="52" Name="Isuzu" />
+  <Carmake BrandId="53" Name="JAC" />
+  <Carmake BrandId="54" Name="Jaguar" />
+  <Carmake BrandId="55" Name="Jeep" />
+  <Carmake BrandId="56" Name="JMC" />
+  <Carmake BrandId="57" Name="Kia" />
+  <Carmake BrandId="58" Name="Koenigsegg" />
+  <Carmake BrandId="59" Name="Lamborghini" />
+  <Carmake BrandId="60" Name="Lancia" />
+  <Carmake BrandId="61" Name="Land Rover " />
+  <Carmake BrandId="62" Name="Landwind" />
+  <Carmake BrandId="63" Name="Lexus" />
+  <Carmake BrandId="64" Name="ChangFeng" />
+  <Carmake BrandId="65" Name="Lifan" />
+  <Carmake BrandId="66" Name="Lincoln" />
+  <Carmake BrandId="67" Name="Lotus" />
+  <Carmake BrandId="68" Name="Luxgen" />
+  <Carmake BrandId="70" Name="Marussia" />
+  <Carmake BrandId="71" Name="Maserati" />
+  <Carmake BrandId="72" Name="Maybach" />
+  <Carmake BrandId="73" Name="Mazda" />
+  <Carmake BrandId="74" Name="McLaren" />
+  <Carmake BrandId="75" Name="Mercedes-Benz" />
+  <Carmake BrandId="76" Name="Mercury" />
+  <Carmake BrandId="77" Name="MG" />
+  <Carmake BrandId="78" Name="MINI" />
+  <Carmake BrandId="79" Name="Mitsuoka" />
+  <Carmake BrandId="80" Name="Morgan" />
+  <Carmake BrandId="81" Name="Nissan" />
+  <Carmake BrandId="82" Name="Noble" />
+  <Carmake BrandId="83" Name="Oldsmobile" />
+  <Carmake BrandId="84" Name="Opel" />
+  <Carmake BrandId="85" Name="PGO" />
+  <Carmake BrandId="86" Name="Pagani" />
+  <Carmake BrandId="87" Name="Panoz" />
+  <Carmake BrandId="88" Name="Perodua" />
+  <Carmake BrandId="89" Name="Peugeot" />
+  <Carmake BrandId="90" Name="Plymouth" />
+  <Carmake BrandId="91" Name="Pontiac" />
+  <Carmake BrandId="92" Name="Porsche" />
+  <Carmake BrandId="93" Name="Proton" />
+  <Carmake BrandId="94" Name="Qoros" />
+  <Carmake BrandId="95" Name="Ravon" />
+  <Carmake BrandId="96" Name="Renault" />
+  <Carmake BrandId="97" Name="Renault Samsung " />
+  <Carmake BrandId="98" Name="Rezvani" />
+  <Carmake BrandId="99" Name="Rimac" />
+  <Carmake BrandId="100" Name="Rolls-Royce" />
+  <Carmake BrandId="101" Name="RAF" />
+  <Carmake BrandId="102" Name="Rover" />
+  <Carmake BrandId="103" Name="Saab" />
+  <Carmake BrandId="104" Name="Saleen" />
+  <Carmake BrandId="105" Name="Saipa" />
+  <Carmake BrandId="106" Name="Saturn" />
+  <Carmake BrandId="107" Name="Scion" />
+  <Carmake BrandId="108" Name="SEAT" />
+  <Carmake BrandId="109" Name="Shuanghuan" />
+  <Carmake BrandId="110" Name="Skoda" />
+  <Carmake BrandId="111" Name="Smart" />
+  <Carmake BrandId="112" Name="Spyker" />
+  <Carmake BrandId="113" Name="SsangYong " />
+  <Carmake BrandId="114" Name="Suzuki" />
+  <Carmake BrandId="115" Name="TATA" />
+  <Carmake BrandId="116" Name="Tesla" />
+  <Carmake BrandId="117" Name="Toyota" />
+  <Carmake BrandId="118" Name="Volkswagen" />
+  <Carmake BrandId="119" Name="Volvo" />
+  <Carmake BrandId="120" Name="ВАЗ (Lada)" />
+  <Carmake BrandId="121" Name="ГАЗ" />
+  <Carmake BrandId="122" Name="Мотоциклы" />
+  <Carmake BrandId="123" Name="УАЗ" />
+  <Carmake BrandId="124" Name="Vauxhall" />
+  <Carmake BrandId="125" Name="Vortex" />
+  <Carmake BrandId="126" Name="Xin Kai" />
+  <Carmake BrandId="127" Name="ZX AUTO" />
+  <Carmake BrandId="128" Name="Zotye" />
+  <Carmake BrandId="129" Name="ЗАЗ" />
+  <Carmake BrandId="130" Name="Велосипед" />
+  <Carmake BrandId="131" Name="Богдан" />
+  <Carmake BrandId="132" Name="ЗИЛ" />
+  <Carmake BrandId="133" Name="Квадроциклы" />
+  <Carmake BrandId="134" Name="ИЖ" />
+  <Carmake BrandId="135" Name="ВИС - АВТО" />
+  <Carmake BrandId="136" Name="Genesis" />
+  <Carmake BrandId="137" Name="Bajaj Auto" />
+  <Carmake BrandId="138" Name="Москвич" />
+  <Carmake BrandId="139" Name="ТагАЗ" />
+  <Carmake BrandId="140" Name="Beijing Auto" />
+  <Carmake BrandId="141" Name="Bufori" />
+  <Carmake BrandId="142" Name="Derways" />
+  <Carmake BrandId="143" Name="Dadi auto" />
+  <Carmake BrandId="144" Name="Doninvest" />
+  <Carmake BrandId="145" Name="DeLorean" />
+  <Carmake BrandId="146" Name="Eagle" />
+  <Carmake BrandId="147" Name="Fuqi" />
+  <Carmake BrandId="148" Name="Daimler" />
+  <Carmake BrandId="149" Name="КАМАЗ" />
+  <Carmake BrandId="150" Name="DAF" />
+  <Carmake BrandId="151" Name="Freightliner" />
+  <Carmake BrandId="152" Name="ПАЗ" />
+  <Carmake BrandId="153" Name="КАвЗ" />
+  <Carmake BrandId="154" Name="МАЗ" />
+</CarBrands>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CarClasses DT="25.03.2020" T="16:05">
+  <Class ID_class="1" Class_name="A-класс" />
+  <Class ID_class="2" Class_name="B-класс" />
+  <Class ID_class="3" Class_name="B-класс кроссоверы" />
+  <Class ID_class="4" Class_name="C-класс" />
+  <Class ID_class="5" Class_name="C-класс кроссоверы" />
+  <Class ID_class="6" Class_name="D-класс" />
+  <Class ID_class="7" Class_name="D-класс кроссоверы" />
+  <Class ID_class="8" Class_name="E-класс" />
+  <Class ID_class="9" Class_name="E-класс кроссоверы" />
+  <Class ID_class="10" Class_name="E-класс джипы, пикапы" />
+  <Class ID_class="11" Class_name="F-класс" />
+  <Class ID_class="12" Class_name="F-класс джипы" />
+  <Class ID_class="13" Class_name="S-класс спорткары и кабриолеты" />
+  <Class ID_class="14" Class_name="Микроавтобусы" />
+</CarClasses>

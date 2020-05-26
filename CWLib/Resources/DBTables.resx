@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoxesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE BOXES (ID INT IDENTITY(1,1) PRIMARY KEY, BOX_NAME VARCHAR (50) NOT NULL, STATE BIT NOT NULL, TECH_STATE BIT NOT NULL, ID_ORDER INT NULL, ORDER_TYPE INT NULL, VIS BIT NOT NULL)</value>
+  </data>
+  <data name="CarCategoriesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CAR_CATEGORIES (ID INT IDENTITY(1,1) PRIMARY KEY, NAME VARCHAR (50) NOT NULL, VIS BIT NOT NULL)</value>
+  </data>
+  <data name="CarClassCategories" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CAR_CLASS_CATEGORY (ID INT IDENTITY(1,1) PRIMARY KEY, CATEGORY_ID INT NOT NULL, CLASS_ID INT NOT NULL)</value>
+  </data>
+  <data name="CarwashOrderServicesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CARWASH_ORDER_SERVICES (ID INT IDENTITY(1,1) PRIMARY KEY, ID_ORDER INT NOT NULL, ID_SERVICE INT NOT NULL, CUSTOM_CATEGORIES BIT NOT NULL, ID_CLASS INT NULL, ID_CATEGORY INT NULL, COUNT INT NOT NULL, PRICE DECIMAL NOT NULL, VIS BIT NOT NULL)</value>
+  </data>
+  <data name="CarwashOrdersTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CARWASH_ORDERS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_BOX INT NOT NULL, ID_PERSON INT NOT NULL, ID_PAYMENT_TYPE INT NOT NULL, ID_CLIENTS_CAR INT NOT NULL, START_TIME DATETIME NOT NULL, EST_END_TIME DATETIME NOT NULL, END_TIME DATETIME NULL, SUM DECIMAL NOT NULL, COMMENT VARCHAR(MAX) NULL, VIS BIT NOT NULL, IS_DELETED BIT NOT NULL)</value>
+  </data>
+  <data name="CarwashOrderWorkersTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CARWASH_ORDER_WORKERS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_ORDER INT NOT NULL, ID_WORKER INT NOT NULL, VIS BIT NOT NULL)</value>
+  </data>
+  <data name="CarwashServicesPricesCategoriesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CSERVICE_CATEGORY_PRICE (ID INT IDENTITY(1,1) PRIMARY KEY, ID_SERVICE INT NOT NULL, ID_CLASS INT NOT NULL, PRICE DECIMAL NOT NULL)</value>
+  </data>
+  <data name="CarwashServicesPricesClassesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CSERVICE_CLASS_PRICE (ID INT IDENTITY(1,1) PRIMARY KEY, ID_SERVICE INT NOT NULL, ID_CLASS INT NOT NULL, PRICE DECIMAL NOT NULL)</value>
+  </data>
+  <data name="CarwashServicesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CARWASH_SERVICES (ID INT IDENTITY(1,1) PRIMARY KEY, NAME VARCHAR (50) NOT NULL, ID_TYPE INT NOT NULL, DESCR VARCHAR(MAX) NULL, DURATION INT NOT NULL, VIS BIT NOT NULL)</value>
+  </data>
+  <data name="CashboxOperationsTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CASHBOX_OPERATIONS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_ORDER INT NULL, SUM DECIMAL NOT NULL, OPERATION_DATETIME DATETIME NOT NULL, ID_MONEY_TYPE INT NOT NULL, DESCR VARCHAR (MAX) NOT NULL, IS_DELETED BIT NOT NULL, IS_CONSUMPTION BIT NOT NULL)</value>
+  </data>
+  <data name="ClientCarsTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CLIENT_CARS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_PERSON INT NOT NULL, ID_CAR_MODEL INT NOT NULL, PLATE VARCHAR(50) NOT NULL, CARWASH_NUM INT NOT NULL, TYRESERVICE_NUM INT NOT NULL)</value>
+  </data>
+  <data name="ClientGroupsTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE CLIENT_GROUPS (ID INT IDENTITY(1,1) PRIMARY KEY, GROUP_NAME VARCHAR (50) NOT NULL, DISCOUNT INT, VIS BIT NOT NULL)</value>
+  </data>
+  <data name="EntityClientsTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE ENTITY_CLIENTS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_PERSON INT NOT NULL, FULL_NAME VARCHAR (100), CITYPHONE VARCHAR (15), FACT_ADRESS VARCHAR (200), LEGAL_ADRESS VARCHAR (200), INN VARCHAR (15), KPP VARCHAR (15), OGRN VARCHAR (15), PAYMENT_ACCOUNT VARCHAR (20), CORR_ACCOUNT VARCHAR (20), BIK VARCHAR (50), CHIEF_ACCOUNTANT VARCHAR (100), GENERAL_MANAGER VARCHAR (100), CONTACT_PERSON VARCHAR (100), CONTACT_PERSON_PHONE VARCHAR (15), ADD_DATE DATETIME NOT NULL)</value>
+  </data>
+  <data name="IndividualClientsTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE INDIVIDUAL_CLIENTS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_PERSON INT NOT NULL, ID_GROUP INT NOT NULL, BIRTHDATE DATETIME NULL, ADD_DATE DATETIME NOT NULL)</value>
+  </data>
+  <data name="PaymentCategoriesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE PAYMENT_CATEGORIES (ID INT IDENTITY(1,1) PRIMARY KEY, NAME VARCHAR (50), VISIBILITY BIT NOT NULL)</value>
+  </data>
+  <data name="PersonsTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE PERSONS (ID INT IDENTITY(1,1) PRIMARY KEY, NAME VARCHAR (200), PHONE VARCHAR (15) NULL, EMAIL VARCHAR (50) NULL, COMMENT VARCHAR (250) NULL, IS_ENTITY BIT NOT NULL, IS_WORKER BIT NOT NULL, VIS BIT NOT NULL)</value>
+  </data>
+  <data name="ProgrammUsersTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE USERS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_WORKER INT, LOGIN VARCHAR (50), PASS VARBINARY (MAX))</value>
+  </data>
+  <data name="ServiceCategoriesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE SERVICE_CATEGORIES (ID INT IDENTITY(1,1) PRIMARY KEY, NAME VARCHAR (50), IS_CARWASH BIT NOT NULL, VISIBILITY BIT NOT NULL)</value>
+  </data>
+  <data name="WorkersCategoriesTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE WORKERS_CATEGORIES (ID INT IDENTITY(1,1) PRIMARY KEY, GROUP_NAME VARCHAR (50), VISIBILITY BIT NOT NULL)</value>
+  </data>
+  <data name="WorkersTable" xml:space="preserve">
+    <value>USE [CARWASH] CREATE TABLE WORKERS (ID INT IDENTITY(1,1) PRIMARY KEY, ID_PERSON INT NOT NULL, BIRTHDATE DATETIME NULL, PASSPORT_SERIES VARCHAR (10) NULL, PASSPORT_NUMBER VARCHAR (10) NULL, PASSPORT_DATE DATETIME NULL, REG_ADRESS VARCHAR (200) NULL, FACT_ADRESS VARCHAR (200) NULL, ID_WORKERS_CATEGORY INT NOT NULL, IS_ON_WORK BIT, IS_BUSY BIT NOT NULL)</value>
+  </data>
+</root>

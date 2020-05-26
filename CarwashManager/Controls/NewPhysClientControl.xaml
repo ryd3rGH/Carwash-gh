@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="CarwashManager.Controls.NewPhysClientControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarwashManager.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="482" d:DesignWidth="880" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Ф.И.О.:" Grid.Row="0" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="1" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="E-mail:" Grid.Row="2" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Дата рождения:" Grid.Row="3" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Группа клиентов:" Grid.Row="4" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Автомобиль:" Grid.Row="5" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" Margin="0,20,0,0" HorizontalAlignment="Right" FontSize="14" Content="Комментарий:" Grid.Row="6" Grid.Column="0"/>
+        <TextBox x:Name="nameTxt" FontSize="14" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
+        <TextBox x:Name="phoneTxt" FontSize="14" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
+        <TextBox x:Name="mailTxt" FontSize="14" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
+        <DatePicker x:Name="bDateTxt" FontSize="14" Grid.Row="3" Grid.Column="1" Width="150" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Margin="15,15,0,3"/>
+        <ComboBox x:Name="groupList" FontSize="14" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
+        <Button x:Name="addCarBtn" Content="+" VerticalContentAlignment="Center" FontSize="14" Grid.Row="5" Grid.Column="1" Width="50" HorizontalAlignment="Left" Margin="15,20,0,3" Click="addCarBtn_Click"/>
+        <Label x:Name="carsLbl" FontSize="13" Grid.Row="5" Grid.Column="1" Margin="85,0,0,0" Height="28" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="commentTxt" FontSize="14" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Top" Width="300" HorizontalAlignment="Left" Margin="15,20,0,50"/>
+    </Grid>
+</UserControl>

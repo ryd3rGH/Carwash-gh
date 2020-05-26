@@ -1,0 +1,22 @@
+﻿<Window x:Class="CarwashManager.Windows.NewClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarwashManager.Windows"
+        mc:Ignorable="d"
+        Title="NewClientWindow" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid x:Name="mainGrid">
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True">
+            <StackPanel Name="topBtnsPanel" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Orientation="Horizontal" Margin="0,0,0,10">
+                <RadioButton x:Name="phBtn" Content="Физ. лицо" IsChecked="True" GroupName="IsPhys" Margin="35,10,0,0" FontSize="14" Checked="phBtn_Checked" Unchecked="phBtn_Unchecked"/>
+                <RadioButton x:Name="entBtn" Content="Юр. лицо" GroupName="IsPhys" Margin="35,10,0,0" FontSize="14"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10">
+                <Button Content="Отмена" Width="100" Height="32" IsCancel="True" FontSize="14"/>
+                <Button x:Name="addBtn" Content="Добавить" Width="100" Height="32" Margin="10,0,0,0" FontSize="14" IsDefault="True" Click="addBtn_Click"></Button>
+            </StackPanel>
+            <Grid x:Name="contentGrid" Margin="10,0,10,0"/>
+        </DockPanel>
+    </Grid>
+</Window>

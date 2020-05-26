@@ -1,0 +1,24 @@
+﻿<Window x:Class="CarwashManager.Windows.NewCarwashOrderLicenceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarwashManager.Windows"
+        mc:Ignorable="d"
+        Title="NewCarwashOrderLicenceWindow" Height="250" Width="350" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Label Content="Введите или выберите г/н авто клиента:" FontSize="14" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <ComboBox Name="licencePlatesList" FontSize="14" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,10,0,0" IsEditable="True"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <Button Name="goToOrderBtn" Content="Далее" FontSize="14" Height="30" Width="120" IsDefault="True" Margin="50,0,10,0" Click="goToOrderBtn_Click"/>
+            <Button Content="Отмена" IsCancel="True" FontSize="14" Height="30" Width="120"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CarClasses>
+  <Class ClassId="1" ClassName="A-класс" />
+  <Class ClassId="2" ClassName="B-класс" />
+  <Class ClassId="3" ClassName="B-класс кроссоверы" />
+  <Class ClassId="4" ClassName="C-класс" />
+  <Class ClassId="5" ClassName="C-класс кроссоверы" />
+  <Class ClassId="6" ClassName="D-класс" />
+  <Class ClassId="7" ClassName="D-класс кроссоверы" />
+  <Class ClassId="8" ClassName="E-класс" />
+  <Class ClassId="9" ClassName="E-класс кроссоверы" />
+  <Class ClassId="10" ClassName="E-класс джипы, пикапы" />
+  <Class ClassId="11" ClassName="F-класс" />
+  <Class ClassId="12" ClassName="F-класс джипы" />
+  <Class ClassId="13" ClassName="S-класс спорткары и кабриолеты" />
+  <Class ClassId="14" ClassName="Микроавтобусы" />
+</CarClasses>

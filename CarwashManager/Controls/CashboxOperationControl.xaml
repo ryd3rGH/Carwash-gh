@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="CarwashManager.Controls.CashboxOperationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarwashManager.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="32" d:DesignWidth="590" Margin="5,5,5,0">
+    <Grid x:Name="mainControlGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="240*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="38"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle StrokeThickness="0.8" RadiusX="2" RadiusY="2" Fill="#8CCBCBCB" Grid.ColumnSpan="6">
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF383838"/>
+                    <GradientStop Color="#FFA4A4A4" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+        <Label x:Name="dateLbl" FontSize="14" VerticalAlignment="Center"/>
+        <Label Name="typeLbl" FontSize="14" VerticalAlignment="Center" Grid.Column="1"/>
+        <Label x:Name="descrLbl" FontSize="14" VerticalAlignment="Center" Grid.Column="2"/>
+        <Label x:Name="moneyLbl" FontSize="14" VerticalAlignment="Center" Grid.Column="3"/>
+        <Label x:Name="sumLbl" FontSize="14" VerticalAlignment="Center" Grid.Column="4"/>
+        <Button x:Name="deleteBtn" Content="DEL" FontSize="14" Grid.Column="5" Margin="2,2,2,2" Click="deleteBtn_Click"/>
+    </Grid>
+</UserControl>
