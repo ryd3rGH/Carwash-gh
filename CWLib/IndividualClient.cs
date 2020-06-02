@@ -99,7 +99,7 @@ namespace CWLib
 
                     updateString = string.Empty;
 
-                    if (Group.Id != newGroup.Id)
+                    if (Group.Id != newGroup.Id && newGroup != null)
                         updateString += $" ID_GROUP = '{newGroup.Id}'";
 
                     if (newBirthdate != null)

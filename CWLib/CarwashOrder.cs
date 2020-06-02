@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using CWLib.Interfaces;
 
@@ -163,9 +164,183 @@ namespace CWLib
             }
         }
 
-        public bool UpdateOrder()
+        public bool UpdateOrder(string connStr, int personId, string newName, string newPhone, string newEmail, 
+            ClientGroup newGroup, Box newBox, List<ClientCar> newCars, List<Worker> newWorkers, 
+            List<CarwashService> newServices, MoneyType newMoneyType, out string err)
         {
-            throw new NotImplementedException();
+            try
+            {
+                EntityClient entClient = null;
+                IndividualClient indClient = null;
+
+                if (DBWorker.EntityClientCheck(connStr, personId))
+                {
+                    entClient = new EntityClient() { Id = personId };
+                    entClient.GetClientInfoById(connStr);
+
+                    entClient.UpdateEntityClient(connStr, newCars, newName, newPhone);
+                }
+
+                else
+                {
+                    indClient = new IndividualClient() { Id = personId };
+                    indClient.GetClientInfoById(connStr);
+
+                    indClient.UpdateIndividualClient(connStr, newGroup, newCars, newName, newPhone, newEmail);
+                }               
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    int tempOrderDuration = 0; //новая длительность выполнения заказа
+                    decimal tempOrderSum = 0; //новая сумма заказа
+
+                    /* проверка и обновление услуг в заказе */
+                    for (int i = 0; i < newServices.Count; i++)
+                    {
+                        tempOrderDuration += newServices[i].Duration.Minutes;
+                        tempOrderSum += (decimal)(newServices[i].OrderServiceCount * newServices[i].UsedPrice);
+
+                        bool serviceFlag = false;
+
+                        for (int j=0; j<Services.Count; j++)
+                        {
+                            if (newServices[i].Id == Services[j].Id)
+                            {
+                                using (SqlCommand updateOrderService = new SqlCommand($"update [CARWASH].[dbo].[CARWASH_ORDER_SERVICES] " +
+                                                                                        $"set COUNT = {newServices[i].OrderServiceCount}, PRICE = {newServices[i].UsedPrice} " +
+                                                                                        $"where ID_ORDER = {Id}", conn))
+                                    updateOrderService.ExecuteNonQuery();
+                                
+                                serviceFlag = true;
+                            }                            
+                        }
+                        
+                        if (!serviceFlag)
+                        {
+                            using (SqlCommand addServiceToOrder = new SqlCommand($"insert into [CARWASH].[dbo].[CARWASH_ORDER_SERVCES] " +
+                                                                                    $"values ({Id}, {newServices[i].Id}, {UsingCustomCategories}, {Services[i].UsedCarClass}, " +
+                                                                                    $"{newServices[i].UsedCarCategory}, {newServices[i].OrderServiceCount}, {newServices[i].UsedPrice}, 'true')", conn))
+                                addServiceToOrder.ExecuteNonQuery();
+                        }
+                    }
+
+                    /* проверить, не удалялись ли услуги в заказе */
+                    for (int i = 0; i < Services.Count; i++)
+                    {
+                        bool delServiceFlag = false;
+                        int delServiceIndex = 0;
+
+                        for (int j = 0; j < newServices.Count; j++)
+                        {
+                            if (Services[i].Id == newServices[j].Id)
+                            {
+                                delServiceFlag = true;
+                                delServiceIndex = i;
+                            }                                
+                        }
+
+                        if (!delServiceFlag)
+                        {
+                            using (SqlCommand delOrderService = new SqlCommand($"update [CARWASH].[dbo].[CARWASH_ORDER_SERVICES] " +
+                                                                                $"set VIS = 'false' " +
+                                                                                $"where ID_ORDER = {Id} and ID_SERVICE = {Services[delServiceIndex].Id}", conn))
+                                delOrderService.ExecuteNonQuery();
+                        }
+                    }
+
+                    /* проверка и обновление работников в заказе */
+                    for (int i = 0; i < newWorkers.Count; i++)
+                    {
+                        bool addFlag = false;
+
+                        for (int j = 0; j < Workers.Count; j++)
+                        {
+                            if (newWorkers[i].Id == Workers[j].Id)
+                            {
+                                addFlag = true;
+                                break;
+                            }
+                        }
+
+                        if (!addFlag)
+                        {
+                            int tempId = 0;
+                            using (SqlCommand findId = new SqlCommand($"select ID from [CARWASH].[dbo].[WORKERS] where ID_PERSON = {newWorkers[i].Id}", conn))
+                                tempId = (int)findId.ExecuteScalar();
+
+                            using (SqlCommand addWorker = new SqlCommand($"insert into [CARWASH].[dbo].[CARWASH_ORDER_WORKERS] " +
+                                                                            $"values ({Id}, {tempId}, 'true')", conn))
+                                addWorker.ExecuteNonQuery();
+                        }
+                    }
+
+                    /* проверить не удалялись ли работники из заказа */
+                    for (int i = 0; i < Workers.Count; i++)
+                    {
+                        bool delFlag = true;
+
+                        for (int j = 0; j < newWorkers.Count; j++)
+                        {
+                            if (Workers[i].Id == newWorkers[j].Id)
+                            {
+                                delFlag = false;
+                                break;
+                            }
+                        }
+
+                        if (delFlag)
+                        {
+                            using (SqlCommand delWorker = new SqlCommand($"delete from [CARWASH].[dbo].[CARWASH_ORDER_WORKERS] " +
+                                                                            $"where ID_ORDER = {Id} and ID_WORKER IN (SELECT ID FROM [CARWASH].[dbo].[WORKERS] WHERE ID_PERSON = {Workers[i].Id})", conn))
+                                delWorker.ExecuteNonQuery();
+                        }
+                    }
+
+                    string updateStr = string.Empty;
+
+                    /* изменение статуса боксов */
+
+                    if (newBox.Id != Box.Id)
+                    {
+                        newBox.SetBoxBusyState(connStr, false);
+                        Box.SetBoxBusyState(connStr, true);
+
+                        updateStr += updateStr == string.Empty ? $"ID_BOX = {newBox.Id}" : $", ID_BOX = {newBox.Id}";
+                    }
+
+                    /* проверка и обновление типа оплаты заказа */
+                    if (newMoneyType.Id != MoneyType.Id)                    
+                        updateStr += updateStr == string.Empty ? $"ID_PAYMENT_TYPE = {newMoneyType.Id}" : $", ID_PAYMENT_TYPE = {newMoneyType.Id}";                    
+
+                    /* проверка и обновление инфо о заказе */
+
+                    if (EstimatedEndTime != StartTime.AddMinutes(tempOrderDuration))
+                        updateStr += updateStr == string.Empty ? $"EST_END_TIME = '{StartTime.AddMinutes(tempOrderDuration).ToString("yyyy-MM-ddThh:mm:ss")}'" : $", EST_END_TIME = '{StartTime.AddMinutes(tempOrderDuration).ToString("yyyy-MM-ddThh:mm:ss")}'";
+
+                    if (Sum != tempOrderSum)
+                        updateStr += updateStr == string.Empty ? $"SUM = {tempOrderSum}" : $", SUM = {tempOrderSum}";
+
+                    if (updateStr != string.Empty)
+                    {
+                        using (SqlCommand updateOrderInfo = new SqlCommand($"update [CARWASH].[dbo].[CARWASH_ORDERS] " +
+                                                                                        $"set {updateStr} " +
+                                                                                        $"where ID = {Id}", conn))
+
+
+                            updateOrderInfo.ExecuteNonQuery();
+                    }                                     
+                }
+
+                err = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                err = ex.ToString();
+                return false;
+            }
         }
 
         public List<IOrder> GetOrders()

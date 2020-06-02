@@ -109,7 +109,7 @@ namespace CWLib
                             updatePerson.ExecuteNonQuery();
                     }
 
-                    /* individual client */
+                    /* entity client */
 
                     updateString = string.Empty;
 

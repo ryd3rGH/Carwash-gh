@@ -20,7 +20,6 @@ C:\Users\Hidewalk001\Desktop\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CW
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.Resources.XMLResources.resources
 C:\Users\Hidewalk001\Desktop\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.Resources.XMLResources.resources
 C:\Users\Hidewalk001\Desktop\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csprojAssemblyReference.cache
-G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csprojAssemblyReference.cache
 F:\db\CSharpCodeProjects\CWLib\bin\Debug\netcoreapp3.1\CWLib.deps.json
 F:\db\CSharpCodeProjects\CWLib\bin\Debug\netcoreapp3.1\CWLib.dll
 F:\db\CSharpCodeProjects\CWLib\bin\Debug\netcoreapp3.1\CWLib.pdb
@@ -33,3 +32,4 @@ F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.AssemblyInfo.cs
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileInputs.cache
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.dll
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.pdb
+G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csprojAssemblyReference.cache

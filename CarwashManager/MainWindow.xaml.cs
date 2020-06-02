@@ -72,10 +72,17 @@ namespace CarwashManager
                 {
                     OrderLineControl order = new OrderLineControl(activeOrders[i]);
                     order.endOrderBtn.Click += EndOrderBtn_Click;
+                    order.updateOrderBtn.Click += UpdateOrderBtn_Click;
                     order.delOrderBtn.Click += DelOrderBtn_Click;
                     ordersPanel.Children.Add(order);
                 }
             }
+        }
+
+        private void UpdateOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshOrdersPanel();
+            UpdateBoxesPanel();
         }
 
         private void DelOrderBtn_Click(object sender, RoutedEventArgs e)

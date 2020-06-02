@@ -85,7 +85,7 @@ namespace CarwashManager.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CarwashManager;component/controls/categorycontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CarwashManager;V0.0.0.1;component/controls/categorycontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\CategoryControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

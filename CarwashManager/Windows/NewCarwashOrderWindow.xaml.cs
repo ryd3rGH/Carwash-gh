@@ -326,7 +326,18 @@ namespace CarwashManager.Windows
             moneyList.ItemsSource = MoneyType.GetMoneyTypes(ConnStr);
 
             if (moneyList.Items.Count > 0)
-                moneyList.SelectedIndex = 0;
+            {
+                if (OrderToUpdate == null)
+                    moneyList.SelectedIndex = 0;
+                else
+                {
+                    for (int i = 0; i < moneyList.Items.Count; i++)
+                    {
+                        if (((MoneyType)moneyList.Items[i]).Id == OrderToUpdate.MoneyType.Id)
+                            moneyList.SelectedItem = moneyList.Items[i];
+                    }
+                }                    
+            }                
         }
 
         public void IsEntityClientOrder(bool isEntity)
@@ -663,10 +674,52 @@ namespace CarwashManager.Windows
                         MessageBox.Show("Не указано наименование клиента");
                 }
             }
-            
+
             else
             {
+                if (nameTxt.Text != string.Empty && !String.IsNullOrWhiteSpace(nameTxt.Text))
+                {
+                    if (SelectedCar != null)
+                    {
+                        if (boxList.SelectedIndex != -1)
+                        {
+                            if (Workers.Count > 0)
+                            {
+                                if (SelectedServices.Count > 0)
+                                {
+                                    if (moneyList.SelectedIndex != -1)
+                                    {
+                                        string err = string.Empty;
+                                        if (OrderToUpdate.UpdateOrder(ConnStr, (int)OrderToUpdate.PersonId,
+                                                                    nameTxt.Text != string.Empty ? nameTxt.Text : "NULL",
+                                                                    phoneTxt.Text != string.Empty ? phoneTxt.Text : "NULL",
+                                                                    mailTxt.Text != string.Empty ? mailTxt.Text : "NULL",
+                                                                    groupsList.SelectedIndex != -1 ? (ClientGroup)groupsList.SelectedItem : null,
+                                                                    (Box)boxList.SelectedItem, new List<ClientCar>() { SelectedCar },
+                                                                    Workers, SelectedServices, (MoneyType)moneyList.SelectedItem, out err)) 
+                                        {
+                                            MessageBox.Show("Заказ успешно изменен");
+                                            this.Close();
+                                        }
 
+                                        else
+                                        {
+                                            MessageBox.Show($"При сохранении изменений заказа возникла ошибка\n{err}");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                else
+                {
+                    if ((bool)physClientBtn.IsChecked)
+                        MessageBox.Show("Не указано имя клиента");
+                    else
+                        MessageBox.Show("Не указано наименование клиента");
+                }
             }
         }
 
@@ -682,7 +735,8 @@ namespace CarwashManager.Windows
 
             if (OrderToUpdate != null)
             {
-                addOrderBtn.Content = "Сохранить";              
+                addOrderBtn.Content = "Сохранить";
+                groupsList.IsEnabled = false;
             }
         }
     }

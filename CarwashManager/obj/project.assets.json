@@ -301,7 +301,7 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "CWLib/1.0.0": {
+      "CWLib/0.0.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1533,7 +1533,7 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "CWLib/1.0.0": {
+    "CWLib/0.0.1": {
       "type": "project",
       "path": "../CWLib/CWLib.csproj",
       "msbuildProject": "../CWLib/CWLib.csproj"
@@ -1541,7 +1541,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "CWLib >= 1.0.0"
+      "CWLib >= 0.0.1"
     ]
   },
   "packageFolders": {
@@ -1549,7 +1549,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.0.1",
     "restore": {
       "projectUniqueName": "G:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj",
       "projectName": "CarwashManager",

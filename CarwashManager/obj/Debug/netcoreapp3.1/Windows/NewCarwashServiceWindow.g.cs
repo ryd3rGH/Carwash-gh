@@ -109,7 +109,7 @@ namespace CarwashManager.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CarwashManager;component/windows/newcarwashservicewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CarwashManager;V0.0.0.1;component/windows/newcarwashservicewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\NewCarwashServiceWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
