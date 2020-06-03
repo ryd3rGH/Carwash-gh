@@ -29,7 +29,7 @@
             <Label Content="Название:" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0"/>
             <TextBox x:Name="nameTxt" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="10,3,10,3"/>
             <Label Content="Длительность:" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0"/>
-            <TextBox x:Name="durationTxt" FontSize="14" Width="50" MaxLength="3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,3,10,5"/>
+            <TextBox x:Name="durationTxt" FontSize="14" Width="50" MaxLength="3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,3,10,5" PreviewTextInput="durationTxt_PreviewTextInput"/>
             <Label Content="мин." Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" Margin="65,0,0,0"/>
             <Label Content="Категория:" Grid.Row="3" Grid.Column="0" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top"/>
             <ComboBox x:Name="typeList" Grid.Row="3" Grid.Column="1" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,3,10,0"/>

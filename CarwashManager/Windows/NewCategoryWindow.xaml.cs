@@ -21,9 +21,10 @@ namespace CarwashManager.Windows
     /// Interaction logic for NewCategoryWindow.xaml
     /// </summary>
     public partial class NewCategoryWindow : Window, IWindow
-    {
+    {        
         public CarCategory CategoryToUpdate { get; set; }
         private string ConnStr { get; set; }
+        public List<CarCategory> UsedCategories { get; set; }
 
         public NewCategoryWindow()
         {
@@ -53,7 +54,65 @@ namespace CarwashManager.Windows
         {
             ResourceManager rm = new ResourceManager("CarwashManager.Resources.TextStrings.WinNames", Assembly.GetExecutingAssembly());
             this.Title = rm.GetString("NewCategoryWindowName");
-        }        
+        } 
+        
+        private void BlockUsedClasses(List<CarCategory> categories)
+        {
+            List<int> usedClasses = new List<int>();
+
+            if (categories != null)
+            {
+                for (int i = 0; i < categories.Count; i++)
+                {
+                    if (categories[i].Classes.Count > 0)
+                    {
+                        for (int j = 0; j < categories[i].Classes.Count; j++)
+                        {
+                            usedClasses.Add(categories[i].Classes[j]);
+                        }
+                    }
+                }
+            }
+
+            if (classesPanel.Children.Count > 0)
+            {
+                for (int i = 0; i < classesPanel.Children.Count; i++)
+                {
+                    if (classesPanel.Children[i].GetType() == typeof(CheckBox))
+                    {
+                        CheckBox cls = (CheckBox)classesPanel.Children[i];
+
+                        for (int j = 0; j < usedClasses.Count; j++)
+                        {
+                            if (cls.Tag.ToString() == usedClasses[j].ToString())
+                                cls.IsEnabled = false;
+                        }
+                    }                    
+                }
+            }
+        }
+
+        private void BlockUsedClasses(List<CarCategory> categories, CarCategory categoryToUpdate)
+        {
+            BlockUsedClasses(categories);
+
+            if (categoryToUpdate != null)
+            {
+                for (int i = 0; i < classesPanel.Children.Count; i++)
+                {
+                    if (classesPanel.Children[i].GetType() == typeof(CheckBox))
+                    {
+                        CheckBox cls = (CheckBox)classesPanel.Children[i];
+
+                        for (int j = 0; j < categoryToUpdate.Classes.Count; j++)
+                        {
+                            if (cls.Tag.ToString() == categoryToUpdate.Classes[j].ToString())
+                                cls.IsEnabled = true;
+                        }
+                    }
+                }
+            }
+        }
 
         private void ShowClasses(List<CarClass> clss)
         {
@@ -94,7 +153,14 @@ namespace CarwashManager.Windows
                             chBox.IsChecked = true;
                         }
                     }
-                }                
+                }
+
+                BlockUsedClasses(UsedCategories, CategoryToUpdate);
+            }
+
+            else
+            {
+                BlockUsedClasses(UsedCategories);
             }
         }
 

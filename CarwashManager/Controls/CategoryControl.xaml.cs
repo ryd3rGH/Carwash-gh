@@ -21,7 +21,8 @@ namespace CarwashManager.Controls
     public partial class CategoryControl : UserControl
     {
         public string ConnStr { get; set; }
-        CarCategory category;
+        public List<CarCategory> Categories { get; set; }
+        private CarCategory category;
 
         public CategoryControl(CarCategory cat)
         {
@@ -61,6 +62,7 @@ namespace CarwashManager.Controls
         {
             NewCategoryWindow categoryUpdate = new NewCategoryWindow();
             categoryUpdate.CategoryToUpdate = category;
+            categoryUpdate.UsedCategories = Categories;
             categoryUpdate.ShowDialog();
         }
     }

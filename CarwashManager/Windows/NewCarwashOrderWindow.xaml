@@ -47,7 +47,7 @@
                                 <Label x:Name="nameLbl" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
                                 <TextBox x:Name="nameTxt" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0"/>
                                 <Label Content="Телефон:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-                                <TextBox x:Name="phoneTxt" Grid.Row="2" Grid.Column="1" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="phoneTxt" Grid.Row="2" Grid.Column="1" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0" VerticalContentAlignment="Center" PreviewTextInput="phoneTxt_PreviewTextInput"/>
                                 <Label Content="E-mail:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
                                 <TextBox x:Name="mailTxt" Grid.Row="3" Grid.Column="1" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0" VerticalContentAlignment="Center"/>
                                 <Label Content="Марка авто:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>

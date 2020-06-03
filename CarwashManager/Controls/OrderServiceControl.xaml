@@ -24,7 +24,7 @@
         </Rectangle>
         <CheckBox x:Name="serviceNameBox" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0" Margin="5,0,0,0" Checked="serviceNameBox_Checked" Unchecked="serviceNameBox_Unchecked"/>
         <Button x:Name="minBtn" Content="-" Grid.Column="2" FontSize="14" Width="36" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,2,5,2" Click="minBtn_Click"/>
-        <TextBox x:Name="numTxt" Grid.Column="3" FontSize="14" HorizontalAlignment="Stretch" Margin="0,3,0,3" FlowDirection="RightToLeft" IsReadOnly="True"/>
+        <TextBox x:Name="numTxt" Grid.Column="3" FontSize="14" HorizontalAlignment="Stretch" Margin="0,3,0,3" FlowDirection="RightToLeft" IsReadOnly="True" PreviewTextInput="numTxt_PreviewTextInput"/>
         <Button x:Name="plusBtn" Content="+" Grid.Column="4" FontSize="14" Width="36" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="5,2,0,2" Click="plusBtn_Click"/>
         <Label x:Name="priceLbl" FontSize="14" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0"/>
     </Grid>

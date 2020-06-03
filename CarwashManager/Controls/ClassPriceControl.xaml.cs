@@ -56,6 +56,11 @@ namespace CarwashManager.Controls
                 nameLbl.ToolTip = carCategory.Name;
                 priceTxt.Text = carCategory.Price != null ? carCategory.Price.ToString() : "0";
             }
-        }        
+        }
+
+        private void priceTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+        }
     }
 }

@@ -98,5 +98,10 @@ namespace CarwashManager.Controls
         {
             return (decimal)Service.UsedPrice * (int)Service.OrderServiceCount;
         }
+
+        private void numTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+        }
     }
 }

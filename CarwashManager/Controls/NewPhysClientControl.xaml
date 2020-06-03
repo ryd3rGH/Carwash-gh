@@ -28,7 +28,7 @@
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Автомобиль:" Grid.Row="5" Grid.Column="0"/>
         <Label VerticalAlignment="Top" Margin="0,20,0,0" HorizontalAlignment="Right" FontSize="14" Content="Комментарий:" Grid.Row="6" Grid.Column="0"/>
         <TextBox x:Name="nameTxt" FontSize="14" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
-        <TextBox x:Name="phoneTxt" FontSize="14" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
+        <TextBox x:Name="phoneTxt" FontSize="14" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3" MaxLength="12" PreviewTextInput="phoneTxt_PreviewTextInput"/>
         <TextBox x:Name="mailTxt" FontSize="14" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
         <DatePicker x:Name="bDateTxt" FontSize="14" Grid.Row="3" Grid.Column="1" Width="150" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Margin="15,15,0,3"/>
         <ComboBox x:Name="groupList" FontSize="14" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>

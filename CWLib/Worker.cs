@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Net;
 using System.Text;
+using Microsoft.Win32;
 
 namespace CWLib
 {
@@ -19,6 +20,8 @@ namespace CWLib
         public User User { get; set; }
         public bool IsOnWork { get; set; }
         public bool IsBusy { get; set; }
+        private string Login { get; set; }
+        private string Pass { get; set; }
 
         public override string ToString()
         {
@@ -61,6 +64,12 @@ namespace CWLib
             }
         }
 
+        public void SetLoginPass(string login, string pass)
+        {
+            Login = login;
+            Pass = pass;
+        }
+
         public bool AddWorker(string connStr, out string er)
         {
             using (SqlConnection conn = new SqlConnection(connStr))
@@ -82,6 +91,29 @@ namespace CWLib
                                                             $"values ({Id}, {bdateStr}, '{PassportSeries}', '{PassportNumber}', {pdateStr}, '{RegistrationAdress}', '{FactAdress}', {WorkerCategory.GroupId}, 'true', 'false')", conn);
 
                     addWorker.ExecuteNonQuery();
+
+                    if (WorkerCategory.GroupName == "Администраторы")
+                    {
+                        string slt = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("SLT").ToString();
+                        Protector protector = new Protector(Encoding.Default.GetBytes(slt));
+
+                        SqlCommand addUser = new SqlCommand($"insert into [CARWASH].[dbo].[USERS] (ID_WORKER, LOGIN, PASS)" +
+                                                            $"values (@id, @login, @pass)", conn);
+
+                        SqlParameter workerIdp = new SqlParameter("@id", System.Data.SqlDbType.Int);
+                        workerIdp.Value = Id;
+                        addUser.Parameters.Add(workerIdp);
+
+                        SqlParameter loginParam = new SqlParameter("@login", System.Data.SqlDbType.VarChar);
+                        loginParam.Value = Login;
+                        addUser.Parameters.Add(loginParam);
+
+                        SqlParameter passParam = new SqlParameter("@pass", System.Data.SqlDbType.VarBinary);
+                        passParam.Value = protector.CreateHash(Encoding.Default.GetBytes(Pass), Encoding.Default.GetBytes(slt));
+                        addUser.Parameters.Add(passParam);
+
+                        addUser.ExecuteNonQuery();
+                    }
 
                     er = null;
                     return true;

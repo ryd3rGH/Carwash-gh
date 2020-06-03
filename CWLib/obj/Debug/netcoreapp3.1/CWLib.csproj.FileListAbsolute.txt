@@ -1,6 +1,5 @@
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.Resources.DBTables.resources
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.GenerateResource.cache
-G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileInputs.cache
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.AssemblyInfoInputs.cache
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.AssemblyInfo.cs
 G:\db\CSharpCodeProjects\CWLib\bin\Debug\netcoreapp3.1\CWLib.deps.json
@@ -33,3 +32,4 @@ F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileI
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.dll
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.pdb
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csprojAssemblyReference.cache
+G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileInputs.cache

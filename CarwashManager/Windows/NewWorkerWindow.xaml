@@ -30,24 +30,28 @@
         </Grid.RowDefinitions>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Ф.И.О.:" Grid.Row="1" Grid.Column="0"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="2" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="E-mail:" Grid.Row="3" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="E-mail:" Grid.Row="8" Grid.Column="0"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Дата рождения:" Grid.Row="4" Grid.Column="0"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Серия паспорта:" Grid.Row="5" Grid.Column="0"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Номер:" Grid.Row="5" Grid.Column="2"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Дата:" Grid.Row="5" Grid.Column="4"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Адрес регистрации:" Grid.Row="6" Grid.Column="0"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Фактический адрес:" Grid.Row="7" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Группа работников:" Grid.Row="8" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Группа работников:" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="nameTxt" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,20,0,0" FontSize="14"/>
-        <TextBox x:Name="phoneTxt" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,20,0,0" FontSize="14"/>
-        <TextBox x:Name="emailTxt" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,20,0,0" FontSize="14"/>
+        <TextBox x:Name="phoneTxt" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,20,0,0" FontSize="14" MaxLength="12" PreviewTextInput="phoneTxt_PreviewTextInput"/>
+        <TextBox x:Name="emailTxt" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,20,0,0" FontSize="14"/>
         <DatePicker x:Name="bDateTxt" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,20,0,0" FontSize="14"/>
-        <TextBox x:Name="psTxt" Grid.Row="5" Grid.Column="1" Margin="10,20,0,0" FontSize="14"/>
-        <TextBox x:Name="pnTxt" Grid.Row="5" Grid.Column="3" Margin="10,20,0,0" FontSize="14"/>
+        <TextBox x:Name="psTxt" Grid.Row="5" Grid.Column="1" Margin="10,20,0,0" FontSize="14" PreviewTextInput="psTxt_PreviewTextInput"/>
+        <TextBox x:Name="pnTxt" Grid.Row="5" Grid.Column="3" Margin="10,20,0,0" FontSize="14" PreviewTextInput="pnTxt_PreviewTextInput"/>
         <DatePicker x:Name="pDateTxt" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Margin="10,20,90,0" FontSize="14"/>
         <TextBox x:Name="raTxt" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" Margin="10,20,0,0" FontSize="14"/>
         <TextBox x:Name="faTxt" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Margin="10,20,0,0" FontSize="14"/>
-        <ComboBox x:Name="groupList" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,18,0,0" FontSize="14"/>
+        <ComboBox x:Name="groupList" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,18,0,0" FontSize="14" SelectionChanged="groupList_SelectionChanged"/>
+        <Label x:Name="loginLbl" Content="Логин:" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Grid.Row="9" />
+        <TextBox x:Name="loginTxt" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,18,-60,0" FontSize="14"/>
+        <Label x:Name="passLbl" Content="Пароль:" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Grid.Row="9" Grid.Column="3"/>
+        <PasswordBox x:Name="passTxt" Grid.Row="9" Grid.Column="4" Margin="10,18,-180,0" FontSize="14"/>
         <StackPanel Grid.Row="10" Grid.Column="4" Grid.ColumnSpan="2" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,10,13,10">
             <Button Content="Отмена" Width="100" Height="32" IsCancel="True" FontSize="14"/>
             <Button x:Name="addBtn" Content="Добавить" Width="100" Height="32" Margin="10,0,0,0" FontSize="14" IsDefault="True" Click="addBtn_Click"></Button>

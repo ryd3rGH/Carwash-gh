@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -38,6 +39,24 @@ namespace CarwashManager.Windows
                 this.Title = rm.GetString("NewWorkerWindowName");
             else
                 this.Title = rm.GetString("UpdateWorkerWindowName");
+        }
+
+        private void HideUIElements(bool isHidden)
+        {
+            if (isHidden)
+            {
+                loginLbl.Visibility = Visibility.Hidden;
+                loginTxt.Visibility = Visibility.Hidden;
+                passLbl.Visibility = Visibility.Hidden;
+                passTxt.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                loginLbl.Visibility = Visibility.Visible;
+                loginTxt.Visibility = Visibility.Visible;
+                passLbl.Visibility = Visibility.Visible;
+                passTxt.Visibility = Visibility.Visible;
+            }
         }
 
         private void RefreshGroupList()
@@ -86,6 +105,15 @@ namespace CarwashManager.Windows
                                 IsBusy = false
                             };
 
+                            if (Worker.WorkerCategory.GroupName == "Администраторы")                            
+                                if (loginTxt.Text != string.Empty && String.IsNullOrWhiteSpace(loginTxt.Text) != true)                                
+                                    if (passTxt.Password != string.Empty && String.IsNullOrWhiteSpace(passTxt.Password) != true)                                    
+                                        Worker.SetLoginPass(loginTxt.Text, passTxt.Password);                                    
+                                    else
+                                        Worker.SetLoginPass(loginTxt.Text, "12345");                                
+                                else
+                                    Worker.SetLoginPass("New Admin", "12345");                                                  
+
                             string err = string.Empty;
                             if (Worker.AddWorker(ConnStr, out err))
                             {
@@ -123,6 +151,7 @@ namespace CarwashManager.Windows
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SetWindowTitle();
+            HideUIElements(true);
 
             if (WorkerToUpdate != null)
             {
@@ -144,6 +173,32 @@ namespace CarwashManager.Windows
                         groupList.SelectedItem = groupList.Items[i];
                 }
             }
+        }
+
+        private void groupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (groupList.Items.Count > 0)
+            {
+                if (((WorkersCategory)groupList.SelectedItem).GroupName == "Администраторы")                
+                    HideUIElements(false);                
+                else
+                    HideUIElements(true);
+            }            
+        }
+
+        private void phoneTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+        }
+
+        private void psTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+        }
+
+        private void pnTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
         }
     }
 }

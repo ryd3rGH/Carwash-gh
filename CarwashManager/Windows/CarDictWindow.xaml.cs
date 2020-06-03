@@ -23,6 +23,9 @@ namespace CarwashManager.Windows
     /// </summary>
     public partial class CarDictWindow : Window, IWindow
     {
+        private bool UsingCustomCategories { get; set; }
+        private List<CarCategory> Categories { get; set; }
+
         public CarDictWindow()
         {
             InitializeComponent();
@@ -33,9 +36,16 @@ namespace CarwashManager.Windows
         private void UseCustomCategories()
         {
             if (Convert.ToBoolean(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("Custom categories")) == true)
+            {
+                UsingCustomCategories = true;
                 customCategoriesChBox.IsChecked = true;
+            }
+                
             else
+            {
+                UsingCustomCategories = false;
                 customCategoriesChBox.IsChecked = false;
+            }                
         }
 
         public void SetFontSize()
@@ -58,12 +68,13 @@ namespace CarwashManager.Windows
         private void ShowCategories()
         {
             categoriesPanel.Children.Clear();
-            List<CarCategory> cats = DBWorker.CategoriesSearch(System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString());
-            if (cats != null && cats.Count > 0)
+            Categories = DBWorker.CategoriesSearch(System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString());
+            if (Categories != null && Categories.Count > 0)
             {
-                for (int i=0; i<cats.Count; i++)
+                for (int i=0; i< Categories.Count; i++)
                 {
-                    CategoryControl category = new CategoryControl(cats[i]);
+                    CategoryControl category = new CategoryControl(Categories[i]);
+                    category.Categories = Categories;
                     category.ConnStr = System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString();
                     category.updateBtn.Click += UpdateBtn_Click;
                     category.delBtn.Click += DelBtn_Click;
@@ -105,6 +116,10 @@ namespace CarwashManager.Windows
         {
             NewCategoryWindow newCat = new NewCategoryWindow();
             newCat.Owner = this;
+
+            if (UsingCustomCategories)
+                newCat.UsedCategories = Categories;
+
             newCat.addBtn.Click += AddBtn_Click;
             newCat.ShowDialog();
         }

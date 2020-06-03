@@ -739,5 +739,10 @@ namespace CarwashManager.Windows
                 groupsList.IsEnabled = false;
             }
         }
+
+        private void phoneTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+        }
     }
 }

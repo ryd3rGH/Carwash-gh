@@ -95,5 +95,10 @@ namespace CarwashManager.Controls
 
             carsLbl.Content = resCarsStr;
         }
+
+        private void phoneTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+        }
     }
 }

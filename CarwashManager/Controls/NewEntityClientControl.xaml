@@ -41,18 +41,18 @@
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="8" Grid.Column="2"/>
         <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Автомобили:" Grid.Row="9" Grid.Column="0"/>
         <TextBox x:Name="nameTxt" FontSize="14" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2"/>
-        <TextBox x:Name="phoneTxt" FontSize="14" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2"/>
+        <TextBox x:Name="phoneTxt" FontSize="14" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2" MaxLength="12" PreviewTextInput="phoneTxt_PreviewTextInput"/>
         <TextBox x:Name="laTxt" FontSize="14" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2"/>
         <TextBox x:Name="faTxt" FontSize="14" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2"/>
-        <TextBox x:Name="innTxt" FontSize="14" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
-        <TextBox x:Name="ogrnTxt" FontSize="14" Grid.Row="4" Grid.Column="3" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
-        <TextBox x:Name="rsTxt" FontSize="14" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
-        <TextBox x:Name="ksTxt" FontSize="14" Grid.Row="5" Grid.Column="3" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
+        <TextBox x:Name="innTxt" FontSize="14" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2" PreviewTextInput="innTxt_PreviewTextInput"/>
+        <TextBox x:Name="ogrnTxt" FontSize="14" Grid.Row="4" Grid.Column="3" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2" PreviewTextInput="ogrnTxt_PreviewTextInput"/>
+        <TextBox x:Name="rsTxt" FontSize="14" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2" PreviewTextInput="rsTxt_PreviewTextInput"/>
+        <TextBox x:Name="ksTxt" FontSize="14" Grid.Row="5" Grid.Column="3" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2" PreviewTextInput="ksTxt_PreviewTextInput"/>
         <TextBox x:Name="bikTxt" FontSize="14" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2"/>
         <TextBox x:Name="directorTxt" FontSize="14" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
         <TextBox x:Name="gbTxt" FontSize="14" Grid.Row="7" Grid.Column="3" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
         <TextBox x:Name="klTxt" FontSize="14" Grid.Row="8" Grid.Column="1" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
-        <TextBox x:Name="phoneKlTxt" FontSize="14" Grid.Row="8" Grid.Column="3" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2"/>
+        <TextBox x:Name="phoneKlTxt" FontSize="14" Grid.Row="8" Grid.Column="3" VerticalContentAlignment="Bottom" Width="200" HorizontalAlignment="Left" Margin="15,14,0,2" MaxLength="12" PreviewTextInput="phoneKlTxt_PreviewTextInput"/>
         <Button x:Name="addCarBtn" Content="+" VerticalContentAlignment="Center" FontSize="14" Grid.Row="9" Grid.Column="1" Width="50" HorizontalAlignment="Left" Margin="15,10,0,3" Click="addCarBtn_Click"/>
         <Label x:Name="carsLbl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Margin="80,15,20,0"/>
     </Grid>

@@ -19,7 +19,7 @@
                 </LinearGradientBrush>
             </Rectangle.Stroke>
         </Rectangle>
-        <TextBox x:Name="priceTxt" Grid.Column="1" FontSize="14" Margin="5,3,5,3" MaxLength="5" FlowDirection="RightToLeft"/>
+        <TextBox x:Name="priceTxt" Grid.Column="1" FontSize="14" Margin="5,3,5,3" MaxLength="5" FlowDirection="RightToLeft" PreviewTextInput="priceTxt_PreviewTextInput"/>
         <Label x:Name="nameLbl" FontSize="14" HorizontalContentAlignment="Right"/>
     </Grid>
 </UserControl>
