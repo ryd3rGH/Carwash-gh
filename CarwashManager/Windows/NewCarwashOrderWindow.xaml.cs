@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -27,12 +28,18 @@ namespace CarwashManager.Windows
         public CarwashOrder OrderToUpdate { get; set; }
         private decimal ServicesSum { get; set; }
         private string ConnStr { get; set; }
+        private CarBrand SelectedCarBrand { get; set; }
         private List<Worker> Workers {get;set;}
         private ClientCar Car { get; set; }
         private List<CarwashService> SelectedServices { get; set; }
         private CarCategory UsedCategory { get; set; }
-
         private ClientCar SelectedCar { get; set; }
+        private List<CarBrand> Brands { get; set; }
+        private List<CarModel> Models { get; set; }
+        private List<ClientGroup> Groups { get; set; }
+        private List<Box> BoxesList { get; set; }
+        private List<MoneyType> MoneyList { get; set; }
+        dynamic ClientInOrder { get; set; }
 
         private int? orderId;
 
@@ -57,143 +64,204 @@ namespace CarwashManager.Windows
             InitializeComponent();
 
             SetWindowTitle();
-            SetWindowBackGround();            
+            SetWindowBackGround();
         }
 
         public void GetCarBrands()
         {
+            brandsList.IsEnabled = false;
+            modelsList.IsEnabled = false;
+
             brandsList.ItemsSource = null;
             brandsList.Items.Clear();
 
-            brandsList.ItemsSource = XMLWorker.ReadBrands();           
+            using (BackgroundWorker brandsWorker = new BackgroundWorker())
+            {
+                brandsWorker.DoWork += BrandsWorker_DoWork;
+                brandsWorker.RunWorkerCompleted += BrandsWorker_RunWorkerCompleted;
+                brandsWorker.RunWorkerAsync();
+            }
         }
+
+        private void BrandsWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Brands = XMLWorker.ReadBrands();
+        }
+
+        private void BrandsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            brandsList.ItemsSource = Brands;
+
+            brandsList.IsEnabled = true;
+            modelsList.IsEnabled = true;
+        }        
+
+        private void GetCarModels()
+        {
+            if (brandsList.SelectedIndex != -1)
+            {
+                servicesPanel.Children.Clear();
+
+                modelsList.ItemsSource = null;
+                modelsList.Items.Clear();
+
+                brandsList.IsEnabled = false;
+                modelsList.IsEnabled = false;
+
+                SelectedCarBrand = (CarBrand)brandsList.SelectedItem;
+
+                using (BackgroundWorker modelsWorker = new BackgroundWorker())
+                {
+                    modelsWorker.DoWork += ModelsWorker_DoWork;
+                    modelsWorker.RunWorkerCompleted += ModelsWorker_RunWorkerCompleted;
+                    modelsWorker.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void ModelsWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Models = XMLWorker.ReadAndSearchModels(SelectedCarBrand);
+        }
+
+        private void ModelsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            modelsList.ItemsSource = Models;
+
+            brandsList.IsEnabled = true;
+            modelsList.IsEnabled = true;
+
+            if ((Car != null && Car.PersonId != null) || OrderToUpdate != null)
+            {
+                if (modelsList.Items.Count > 0)
+                {
+                    for (int i = 0; i < modelsList.Items.Count; i++)
+                    {
+                        if (((CarModel)modelsList.Items[i]).Id == SelectedCar.Car.Id)
+                            modelsList.SelectedIndex = i;
+                    }
+                }
+            }
+        }        
 
         public void GetClientGroups()
         {
+            groupsList.IsEnabled = false;
             groupsList.ItemsSource = null;
-            groupsList.Items.Clear();
+            groupsList.Items.Clear();         
 
-            groupsList.ItemsSource = DBWorker.GroupsSearch(ConnStr);
+            using (BackgroundWorker groupsWorker = new BackgroundWorker())
+            {
+                groupsWorker.DoWork += GroupsWorker_DoWork;
+                groupsWorker.RunWorkerCompleted += GroupsWorker_RunWorkerCompleted;
+                groupsWorker.RunWorkerAsync();
+            }
+        }
+
+        private void GroupsWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Groups = DBWorker.GroupsSearch(ConnStr);
+        }
+
+        private void GroupsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            groupsList.ItemsSource = Groups;
 
             if (groupsList.Items.Count > 0)
                 groupsList.SelectedIndex = 0;
-        }        
+
+            groupsList.IsEnabled = true;
+        }               
 
         public void GetClientInfo()
         {
+            stPanel.IsEnabled = false;
+            ClientInOrder = null;
+
+            BackgroundWorker clientLoader = new BackgroundWorker();
+            clientLoader.DoWork += ClientLoader_DoWork;
+            clientLoader.RunWorkerCompleted += ClientLoader_RunWorkerCompleted;
+            clientLoader.RunWorkerAsync();
+        }
+
+        private void ClientLoader_DoWork(object sender, DoWorkEventArgs e)
+        {
             if (OrderToUpdate == null)
             {
-                licencePlateTxt.Text = Car.LicencePlate;
-
                 /* Существующий клиент */
                 if (Car != null && Car.PersonId != null)
                 {
-                    stPanel.IsEnabled = false;
-
-                    dynamic client = null;
                     SelectedCar = new ClientCar();
-
                     if (DBWorker.EntityClientCheck(ConnStr, (int)Car.PersonId))
                     {
-                        entityClientBtn.IsChecked = true;
-
-                        client = new EntityClient() { Id = Car.PersonId };
-                        client.GetClientInfoById(ConnStr);
+                        ClientInOrder = new EntityClient() { Id = Car.PersonId };
+                        ClientInOrder.GetClientInfoById(ConnStr);
                     }
                     else
                     {
-                        physClientBtn.IsChecked = true;
-
-                        client = new IndividualClient() { Id = Car.PersonId };
-                        client.GetClientInfoById(ConnStr);
+                        ClientInOrder = new IndividualClient() { Id = Car.PersonId };
+                        ClientInOrder.GetClientInfoById(ConnStr);
                     }
 
-                    nameTxt.Text = client.Name;
-                    phoneTxt.Text = client.Phone;
-                    mailTxt.Text = client.Email;
-
-                    if (client.GetType() == typeof(EntityClient))
-                        SelectedCar = ((EntityClient)client).Cars.Find(x => x.Car.Id == this.Car.Car.Id);
-                    else
-                        SelectedCar = ((IndividualClient)client).Cars.Find(x => x.Car.Id == this.Car.Car.Id);
-
-                    for (int i = 0; i < brandsList.Items.Count; i++)
-                    {
-                        if (((CarBrand)brandsList.Items[i]).Id == SelectedCar.Car.Brand.Id)
-                            brandsList.SelectedIndex = i;
-                    }
-
-                    if (modelsList.Items.Count > 0)
-                    {
-                        for (int i = 0; i < modelsList.Items.Count; i++)
-                        {
-                            if (((CarModel)modelsList.Items[i]).Id == SelectedCar.Car.Id)
-                                modelsList.SelectedIndex = i;
-                        }
-                    }
-                }
-
-                /* Новый клиент */
-                else
-                {
-                    physClientBtn.IsChecked = true;
-                }                 
+                    if (ClientInOrder.GetType() == typeof(EntityClient))
+                        SelectedCar = ((EntityClient)ClientInOrder).Cars.Find(x => x.Car.Id == this.Car.Car.Id);
+                    else if (ClientInOrder.GetType() == typeof(IndividualClient))
+                        SelectedCar = ((IndividualClient)ClientInOrder).Cars.Find(x => x.Car.Id == this.Car.Car.Id);
+                }                
             }
+
             else
             {
-                /* клиент */
-
-                dynamic client = null;
                 bool isEntity = DBWorker.EntityClientCheck(ConnStr, (int)OrderToUpdate.PersonId);
-
-                entityClientBtn.IsEnabled = false;
-                physClientBtn.IsEnabled = false;
 
                 if (isEntity)
                 {
-                    client = new EntityClient() { Id = (int)OrderToUpdate.PersonId };
-                    ((EntityClient)client).GetClientInfoById(ConnStr);
+                    ClientInOrder = new EntityClient() { Id = (int)OrderToUpdate.PersonId };
+                    ((EntityClient)ClientInOrder).GetClientInfoById(ConnStr);
 
                     SelectedCar = ClientCar.GetCarByIdClientCar(ConnStr, OrderToUpdate.IdClientsCar);
-                    entityClientBtn.IsChecked = true;
-
-                    nameTxt.Text = client.Name;
-                    licencePlateTxt.Text = ClientCar.GetCarByIdClientCar(ConnStr, OrderToUpdate.IdClientsCar).LicencePlate;
-
-                    if (brandsList.Items.Count > 0)
-                    {
-                        for (int i = 0; i < brandsList.Items.Count; i++)
-                        {
-                            if (((CarBrand)brandsList.Items[i]).Id == SelectedCar.Car.Brand.Id)
-                                brandsList.SelectedItem = brandsList.Items[i];
-                        }
-                    }
                 }
 
                 else
                 {
-                    client = new IndividualClient() { Id = (int)OrderToUpdate.PersonId };
-                    ((IndividualClient)client).GetClientInfoById(ConnStr);
+                    ClientInOrder = new IndividualClient() { Id = (int)OrderToUpdate.PersonId };
+                    ((IndividualClient)ClientInOrder).GetClientInfoById(ConnStr);
 
                     SelectedCar = ClientCar.GetCarByIdClientCar(ConnStr, OrderToUpdate.IdClientsCar);
+                }
+            }
+        }
+
+        private void ClientLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if ((Car != null && Car.PersonId != null) || OrderToUpdate != null)
+            {
+                if (ClientInOrder.GetType() == typeof(EntityClient))
+                    entityClientBtn.IsChecked = true;
+                else if (ClientInOrder.GetType() == typeof(IndividualClient))
                     physClientBtn.IsChecked = true;
 
-                    nameTxt.Text = ((IndividualClient)client).Name;
-                    phoneTxt.Text = ((IndividualClient)client).Phone;
-                    mailTxt.Text = ((IndividualClient)client).Email;
+                nameTxt.Text = ClientInOrder.Name;
+                phoneTxt.Text = ClientInOrder.Phone;
+                mailTxt.Text = ClientInOrder.Email;
 
-                    licencePlateTxt.Text = ClientCar.GetCarByIdClientCar(ConnStr, OrderToUpdate.IdClientsCar).LicencePlate;
-
-                    if (brandsList.Items.Count > 0)
-                    {
-                        for (int i = 0; i < brandsList.Items.Count; i++)
-                        {
-                            if (((CarBrand)brandsList.Items[i]).Id == SelectedCar.Car.Brand.Id)
-                                brandsList.SelectedItem = brandsList.Items[i];
-                        }
-                    }
-                }               
+                for (int i = 0; i < brandsList.Items.Count; i++)
+                {
+                    if (((CarBrand)brandsList.Items[i]).Id == SelectedCar.Car.Brand.Id)
+                        brandsList.SelectedIndex = i;
+                }
             }
+
+            else
+            {
+                physClientBtn.IsChecked = true;
+                stPanel.IsEnabled = true;
+            }
+
+            if (OrderToUpdate == null)            
+                licencePlateTxt.Text = Car.LicencePlate;
+            else            
+                licencePlateTxt.Text = ClientCar.GetCarByIdClientCar(ConnStr, OrderToUpdate.IdClientsCar).LicencePlate;                  
         }
 
         public void GetServices()
@@ -217,7 +285,7 @@ namespace CarwashManager.Windows
                 ServicesSum = CalculateSum(SelectedServices);
                 serviceTypesList_SelectionChanged(null, null);
             }
-        }
+        }        
 
         public void GetWorkers()
         {
@@ -301,14 +369,24 @@ namespace CarwashManager.Windows
 
         public void GetAdditionalInfo()
         {
-            /* Загрузка боксов */
             boxList.ItemsSource = null;
             boxList.Items.Clear();
 
-            List<Box> boxesList = new List<Box>();
-            DBWorker.BoxesSearch(ConnStr, out boxesList);
+            moneyList.ItemsSource = null;
+            moneyList.Items.Clear();
 
-            boxList.ItemsSource = boxesList;
+            using (BackgroundWorker additionalWorker = new BackgroundWorker())
+            {
+                additionalWorker.DoWork += AdditionalWorker_DoWork;
+                additionalWorker.RunWorkerCompleted += AdditionalWorker_RunWorkerCompleted;
+                additionalWorker.RunWorkerAsync();
+            }
+        }
+
+        private void AdditionalWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            boxList.ItemsSource = BoxesList;
+            moneyList.ItemsSource = MoneyList;
 
             if (OrderToUpdate != null)
             {
@@ -317,27 +395,34 @@ namespace CarwashManager.Windows
                     if (((Box)boxList.Items[i]).Id == OrderToUpdate.Box.Id)
                         boxList.SelectedItem = boxList.Items[i];
                 }
-            }
 
-            /* Загрузка типов оплаты */
-            moneyList.ItemsSource = null;
-            moneyList.Items.Clear();
-
-            moneyList.ItemsSource = MoneyType.GetMoneyTypes(ConnStr);
-
-            if (moneyList.Items.Count > 0)
-            {
-                if (OrderToUpdate == null)
-                    moneyList.SelectedIndex = 0;
-                else
+                if (moneyList.Items.Count > 0)
                 {
                     for (int i = 0; i < moneyList.Items.Count; i++)
                     {
                         if (((MoneyType)moneyList.Items[i]).Id == OrderToUpdate.MoneyType.Id)
                             moneyList.SelectedItem = moneyList.Items[i];
                     }
-                }                    
-            }                
+                }
+            }
+            else
+                moneyList.SelectedIndex = 0;
+        }
+
+        private void AdditionalWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BoxesList = Box.GetBoxes(ConnStr);
+
+            /* Загрузка боксов */
+            if (OrderToUpdate != null)
+            {
+                OrderToUpdate.Box.GetBoxInfoById(ConnStr);
+                BoxesList.Add(OrderToUpdate.Box);
+                BoxesList = BoxesList.OrderBy(x => x.Name).ToList();
+            }
+
+            /* Загрузка типов оплаты */
+            MoneyList = MoneyType.GetMoneyTypes(ConnStr);
         }
 
         public void IsEntityClientOrder(bool isEntity)
@@ -371,6 +456,21 @@ namespace CarwashManager.Windows
                 this.Title = rm.GetString("UpdateCarwashOrderWindowName") + $" №{OrderToUpdate.Id}";
         }
 
+        private void LockUnlockUI(bool state)
+        {
+            for (int i = 0; i < mainGrid.Children.Count; i++)
+                mainGrid.Children[i].IsEnabled = state;
+
+            for (int j = 0; j < workersGrid.Children.Count; j++)            
+                workersGrid.Children[j].IsEnabled = state;
+
+            for (int k = 0; k < servicesMainPanel.Children.Count; k++)            
+                servicesMainPanel.Children[k].IsEnabled = state;
+
+            for (int l = 0; l < additionalGrid.Children.Count; l++)
+                additionalGrid.Children[l].IsEnabled = state;
+        }
+
         private void physClientBtn_Checked(object sender, RoutedEventArgs e)
         {
             IsEntityClientOrder(false);
@@ -383,15 +483,7 @@ namespace CarwashManager.Windows
 
         private void brandsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (brandsList.SelectedIndex != -1)
-            {
-                servicesPanel.Children.Clear();
-
-                modelsList.ItemsSource = null;
-                modelsList.Items.Clear();
-
-                modelsList.ItemsSource = XMLWorker.ReadAndSearchModels((CarBrand)brandsList.SelectedItem);
-            }
+            GetCarModels();
         }
 
         private void modelsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -413,6 +505,7 @@ namespace CarwashManager.Windows
                 if (serviceTypesList.SelectedIndex != -1)
                 {
                     servicesPanel.Children.Clear();
+                    //GetServicesList();
                     List<CarwashService> services = new List<CarwashService>();
                     services = CarwashService.GetServices(ConnStr,
                                                         ((ServiceType)serviceTypesList.SelectedItem).Id,
@@ -630,7 +723,8 @@ namespace CarwashManager.Windows
                                                 Workers = Workers,
                                                 Services = SelectedServices,
                                                 Sum = CalculateSum(SelectedServices),
-                                                UsingCustomCategories = Convert.ToBoolean(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("Custom Categories"))
+                                                UsingCustomCategories = Convert.ToBoolean(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("Custom Categories")),
+                                                AdmId = Convert.ToInt32(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("User"))
                                             };
 
                                             string err = string.Empty;
@@ -640,7 +734,7 @@ namespace CarwashManager.Windows
                                                 for (int i = 0; i < Workers.Count; i++)
                                                     Workers[i].SetWorkerBusyState(ConnStr, true);
 
-                                                order.Box.SetBoxBusyState(ConnStr, false);
+                                                order.Box.SetBoxBusyState(ConnStr, false, orderId, true);
 
                                                 MessageBox.Show($"Заказ №{orderId} успешно добавлен");
                                                 this.Close();
@@ -725,11 +819,13 @@ namespace CarwashManager.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            LockUnlockUI(false);
+
             GetCarBrands();
             GetClientGroups();
             GetClientInfo();
-            SelectCarInExistOrder();
-            GetWorkers();
+            GetWorkers();                     
+            SelectCarInExistOrder();            
             GetServices();
             GetAdditionalInfo();
 
@@ -738,6 +834,8 @@ namespace CarwashManager.Windows
                 addOrderBtn.Content = "Сохранить";
                 groupsList.IsEnabled = false;
             }
+
+            LockUnlockUI(true);
         }
 
         private void phoneTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)

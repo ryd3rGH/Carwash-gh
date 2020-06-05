@@ -32,16 +32,10 @@ namespace CarwashManager.Windows
 
             SetWindowBackGround();
             SetWindowTitle();
-            SetFontSize();
             ShowClasses(XMLWorker.ReadClasses());
 
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             ConnStr = System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString();
-        }
-
-        public void SetFontSize()
-        {
-            
         }
 
         public void SetWindowBackGround()

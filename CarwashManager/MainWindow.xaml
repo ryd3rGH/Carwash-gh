@@ -9,7 +9,13 @@
     <Grid x:Name="mainGrid">
         <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True">
             <Grid x:Name="topPanel" DockPanel.Dock="Top" Margin="1" MinHeight="25"></Grid>
-            <Grid x:Name="bottomPanel" DockPanel.Dock="Bottom" Margin="1" MinHeight="25"></Grid>
+            <Grid x:Name="bottomPanel" DockPanel.Dock="Bottom" Margin="5,1,5,1" MinHeight="25" Background="#FFE2E2E2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <ProgressBar x:Name="loadBar" Grid.Column="1" Margin="3,3,3,3" IsIndeterminate="True" Visibility="Hidden"/>
+            </Grid>
             <Grid x:Name="contentGrid" Margin="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.55*"/>

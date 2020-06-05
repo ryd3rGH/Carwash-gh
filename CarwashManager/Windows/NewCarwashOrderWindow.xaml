@@ -24,7 +24,7 @@
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid Height="250">
                         <GroupBox Header="Информация о клиенте" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
-                            <Grid>
+                            <Grid x:Name="mainGrid">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition Height="31"/>
@@ -65,7 +65,7 @@
                     </Grid>
                     <Grid Height="220">
                         <GroupBox Header="Работники" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
-                            <Grid>
+                            <Grid x:Name="workersGrid">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.12*"/>
                                     <ColumnDefinition/>
@@ -83,7 +83,7 @@
                     </Grid>
                     <Grid Height="350">
                         <GroupBox Header="Услуги" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
-                            <DockPanel LastChildFill="True">
+                            <DockPanel x:Name="servicesMainPanel" LastChildFill="True">
                                 <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top" LastChildFill="True">
                                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Margin="0,15,0,0">
                                         <Label Content="Категория услуг:" Margin="16,0,0,0"/>
@@ -106,7 +106,7 @@
                     </Grid>
                     <Grid Height="200">
                         <GroupBox Header="Дополнительно" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
-                            <Grid>
+                            <Grid x:Name="additionalGrid">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>

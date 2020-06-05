@@ -38,9 +38,9 @@ namespace CWLib
                         EstimatedEndTime = StartTime.AddMinutes(OrderDuration);
                     }
                     
-                    SqlCommand addOrder = new SqlCommand($"insert into [CARWASH].[dbo].[CARWASH_ORDERS] (ID_BOX, ID_PERSON, ID_PAYMENT_TYPE, ID_CLIENTS_CAR, START_TIME, EST_END_TIME, END_TIME, SUM, COMMENT, VIS, IS_DELETED) " +
+                    SqlCommand addOrder = new SqlCommand($"insert into [CARWASH].[dbo].[CARWASH_ORDERS] (ID_BOX, ID_PERSON, ID_PAYMENT_TYPE, ID_CLIENTS_CAR, START_TIME, EST_END_TIME, END_TIME, SUM, COMMENT, VIS, IS_DELETED, ID_ADMIN) " +
                                                         $"output inserted.ID " +
-                                                        $"values ({Box.Id}, {PersonId}, {MoneyType.Id}, {IdClientsCar}, '{StartTime.ToString("yyyy-MM-ddThh:mm:ss")}', '{((DateTime)EstimatedEndTime).ToString("yyyy-MM-ddThh:mm:ss")}', null, {Sum}, '{Comment}', 'true', 'false')", conn);
+                                                        $"values ({Box.Id}, {PersonId}, {MoneyType.Id}, {IdClientsCar}, '{StartTime.ToString("yyyy-MM-ddThh:mm:ss")}', '{((DateTime)EstimatedEndTime).ToString("yyyy-MM-ddThh:mm:ss")}', null, {Sum}, '{Comment}', 'true', 'false', {AdmId})", conn);
 
                     Id = Convert.ToInt32(addOrder.ExecuteScalar());
                     orderId = (int)Id;
@@ -103,7 +103,7 @@ namespace CWLib
                     for (int i = 0; i < Workers.Count; i++) //null reference
                         Workers[i].SetWorkerBusyState(connStr, false);
 
-                    Box.SetBoxBusyState(connStr, true);
+                    Box.SetBoxBusyState(connStr, true, Id, true);
                 }
 
                 return true;
@@ -304,8 +304,8 @@ namespace CWLib
 
                     if (newBox.Id != Box.Id)
                     {
-                        newBox.SetBoxBusyState(connStr, false);
-                        Box.SetBoxBusyState(connStr, true);
+                        newBox.SetBoxBusyState(connStr, false, Id, true);
+                        Box.SetBoxBusyState(connStr, true, Id, true);
 
                         updateStr += updateStr == string.Empty ? $"ID_BOX = {newBox.Id}" : $", ID_BOX = {newBox.Id}";
                     }

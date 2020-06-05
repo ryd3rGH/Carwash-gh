@@ -109,6 +109,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.Win32.Registry": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
             "System.Data.Common": {
               "target": "Package",
               "version": "[4.3.0, )"

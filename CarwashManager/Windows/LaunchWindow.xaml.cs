@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,7 +25,8 @@ namespace CarwashManager.Windows
     /// </summary>
     public partial class LaunchWindow : Window, IWindow
     {
-        string ConnStr { get; set; }
+        private string ConnStr { get; set; }
+        private string ReportString { get; set; }
 
         public LaunchWindow()
         {
@@ -57,20 +60,34 @@ namespace CarwashManager.Windows
             /* TODO: сделать все нижеописанные операции в потоках, чтоб не фризило интерфейс */
             /* TODO: облагородить интерфейс */
 
+            using (BackgroundWorker launchWorker = new BackgroundWorker())
+            {
+                launchWorker.WorkerReportsProgress = true;
+                launchWorker.WorkerSupportsCancellation = true;
+
+                launchWorker.ProgressChanged += LaunchWorker_ProgressChanged;
+                launchWorker.DoWork += LaunchWorker_DoWork;
+                launchWorker.RunWorkerCompleted += LaunchWorker_RunWorkerCompleted;
+                launchWorker.RunWorkerAsync();
+            }         
+        }
+
+        private void LaunchWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
             /* Проверка наличия ресурсов*/
-            loadingLbl.Content = "Проверка ресурсов...";
+            ((BackgroundWorker)sender).ReportProgress(0, "Проверка ресурсов...");
             if (System.IO.File.Exists("CWLib.dll"))
             {
                 /* Проверка БД */
-                loadingLbl.Content = "Проверка наличия БД...";
+                ((BackgroundWorker)sender).ReportProgress(0, "Проверка наличия БД...");
                 if (!DBWorker.CheckDBCreation(ConnStr))
                 {
                     /* Создание БД */
-                    loadingLbl.Content = "Создание БД...";
+                    ((BackgroundWorker)sender).ReportProgress(0, "Создание БД...");
                     DBWorker.CreateDB(ConnStr);
 
                     /* Создание таблиц */
-                    loadingLbl.Content = "Создание таблиц...";
+                    ((BackgroundWorker)sender).ReportProgress(0, "Создание таблиц...");
                     DBWorker.CreateDBTables(ConnStr);
 
                     try
@@ -84,7 +101,7 @@ namespace CarwashManager.Windows
                         sltKey.Close();
 
                         /* Внесение базовой информации о группах работников */
-                        loadingLbl.Content = "Внесение базовой информации...";
+                        ((BackgroundWorker)sender).ReportProgress(0, "Внесение базовой информации...");
                         DBWorker.AddInitialWorkersInfo(ConnStr);
 
                         /* Внесение информации о типах услуг */
@@ -115,17 +132,27 @@ namespace CarwashManager.Windows
                 }
                 catch (Exception ex)
                 {
+                    ((BackgroundWorker)sender).CancelAsync();
                     MessageBox.Show(ex.ToString());
                     throw;
                 }
 
-                /* Запуск логин-формы */
-                LoginWindow loginWindow = new LoginWindow();
-                this.Close();
-                loginWindow.ShowDialog();                
+                /* Запуск логин-формы */               
             }
             else
-                loadingLbl.Content = "Файл ресурсов не найден!";            
+                ((BackgroundWorker)sender).ReportProgress(0, "Файл ресурсов не найден!");
         }
+
+        private void LaunchWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            this.Close();
+            loginWindow.ShowDialog();
+        }
+
+        private void LaunchWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            loadingLbl.Content = e.UserState.ToString();
+        }               
     }
 }

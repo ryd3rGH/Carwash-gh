@@ -31,5 +31,5 @@ F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.AssemblyInfo.cs
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileInputs.cache
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.dll
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.pdb
-G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csprojAssemblyReference.cache
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileInputs.cache
+G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csprojAssemblyReference.cache

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,29 +26,15 @@ namespace CarwashManager.Windows
     public partial class CarDictWindow : Window, IWindow
     {
         private bool UsingCustomCategories { get; set; }
+        private CarBrand SelectedBrand { get; set; }
+        private List<CarBrand> Brands { get; set; }
         private List<CarCategory> Categories { get; set; }
+        private List<CarModel> Models { get; set; }
 
         public CarDictWindow()
         {
             InitializeComponent();
-
-            brandsComboBox.ItemsSource = XMLWorker.ReadBrands();
-        }
-
-        private void UseCustomCategories()
-        {
-            if (Convert.ToBoolean(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("Custom categories")) == true)
-            {
-                UsingCustomCategories = true;
-                customCategoriesChBox.IsChecked = true;
-            }
-                
-            else
-            {
-                UsingCustomCategories = false;
-                customCategoriesChBox.IsChecked = false;
-            }                
-        }
+        }        
 
         public void SetFontSize()
         {
@@ -65,13 +53,73 @@ namespace CarwashManager.Windows
             this.Title = rm.GetString("CarDictWindowName");
         }
 
+        private void UseCustomCategories()
+        {
+            if (Convert.ToBoolean(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("Custom categories")) == true)
+            {
+                UsingCustomCategories = true;
+                customCategoriesChBox.IsChecked = true;
+            }
+
+            else
+            {
+                UsingCustomCategories = false;
+                customCategoriesChBox.IsChecked = false;
+            }
+        }
+
+        private void ShowBrands()
+        {
+            brandsComboBox.IsEnabled = false;
+            modelsComboBox.IsEnabled = false;
+
+            using (BackgroundWorker brandsWorker = new BackgroundWorker())
+            {
+                brandsWorker.DoWork += BrandsWorker_DoWork;
+                brandsWorker.RunWorkerCompleted += BrandsWorker_RunWorkerCompleted;
+                brandsWorker.RunWorkerAsync();
+            }
+        }
+
+        private void BrandsWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Brands = XMLWorker.ReadBrands();
+        }
+
+        private void BrandsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            brandsComboBox.IsEnabled = true;
+            modelsComboBox.IsEnabled = true;
+
+            brandsComboBox.ItemsSource = null;
+            brandsComboBox.Items.Clear();
+            brandsComboBox.ItemsSource = Brands;
+        }       
+
         private void ShowCategories()
         {
-            categoriesPanel.Children.Clear();
+            btnsPanel.IsEnabled = false;
+
+            using (BackgroundWorker catWorker = new BackgroundWorker())
+            {
+                catWorker.DoWork += CatWorker_DoWork;
+                catWorker.RunWorkerCompleted += CatWorker_RunWorkerCompleted;
+                catWorker.RunWorkerAsync();
+            }
+        }
+
+        private void CatWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
             Categories = DBWorker.CategoriesSearch(System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString());
+        }
+
+        private void CatWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            categoriesPanel.Children.Clear();
+
             if (Categories != null && Categories.Count > 0)
             {
-                for (int i=0; i< Categories.Count; i++)
+                for (int i = 0; i < Categories.Count; i++)
                 {
                     CategoryControl category = new CategoryControl(Categories[i]);
                     category.Categories = Categories;
@@ -81,7 +129,45 @@ namespace CarwashManager.Windows
                     categoriesPanel.Children.Add(category);
                 }
             }
+
+            btnsPanel.IsEnabled = true;
+        }        
+
+        private void ShowModels()
+        {
+            brandsComboBox.IsEnabled = false;
+            modelsComboBox.IsEnabled = false;
+
+            contentPanel.Visibility = Visibility.Hidden;
+            modelsComboBox.ItemsSource = null;
+
+            if (brandsComboBox.SelectedIndex != -1)
+            {
+                SelectedBrand = (CarBrand)brandsComboBox.SelectedItem;
+
+                using (BackgroundWorker modelsWorker = new BackgroundWorker())
+                {
+                    modelsWorker.DoWork += ModelsWorker_DoWork;
+                    modelsWorker.RunWorkerCompleted += ModelsWorker_RunWorkerCompleted;
+                    modelsWorker.RunWorkerAsync();
+                }
+            }
         }
+
+        private void ModelsWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Models = XMLWorker.ReadAndSearchModels(SelectedBrand);
+        }
+
+        private void ModelsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            modelsComboBox.ItemsSource = null;
+            modelsComboBox.Items.Clear();
+            modelsComboBox.ItemsSource = Models;
+
+            brandsComboBox.IsEnabled = true;
+            modelsComboBox.IsEnabled = true;
+        }        
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -107,6 +193,7 @@ namespace CarwashManager.Windows
             SetFontSize();
 
             ShowCategories();
+            ShowBrands();
             UseCustomCategories();
 
             contentPanel.Visibility = Visibility.Hidden;            
@@ -142,13 +229,7 @@ namespace CarwashManager.Windows
         private void brandsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             contentPanel.Visibility = Visibility.Hidden;
-            modelsComboBox.ItemsSource = null;
-
-            if (brandsComboBox.SelectedIndex != -1)
-            {
-                CarBrand brand = (CarBrand)brandsComboBox.SelectedItem;                
-                modelsComboBox.ItemsSource = XMLWorker.ReadAndSearchModels(brand);
-            }
+            ShowModels();
         }
 
         private void modelsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -168,16 +249,6 @@ namespace CarwashManager.Windows
             }
             else
                 contentPanel.Visibility = Visibility.Hidden;
-        }
-
-        private void addBrandBtn_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void addModelBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

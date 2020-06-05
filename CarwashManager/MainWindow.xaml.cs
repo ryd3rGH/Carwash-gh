@@ -19,6 +19,8 @@ using CarwashManager.Classes;
 using CarwashManager.Controls;
 using System.Reflection;
 using System.Data;
+using System.ComponentModel;
+using System.Threading;
 
 namespace CarwashManager
 {
@@ -28,6 +30,8 @@ namespace CarwashManager
     public partial class MainWindow : Window, IWindow 
     {
         public int WorkerId { get; set; }
+        private List<Box> Boxes { get; set; }
+        private List<CarwashOrder> ActiveOrders { get; set; }
 
         public MainWindow()
         {
@@ -63,20 +67,37 @@ namespace CarwashManager
 
         private void RefreshOrdersPanel()
         {
+            loadBar.Visibility = Visibility.Visible;
             ordersPanel.Children.Clear();
 
-            List<CarwashOrder> activeOrders = CarwashOrder.GetActiveOrders(System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString());
-            if (activeOrders.Count > 0)
+            using (BackgroundWorker ordersWorker = new BackgroundWorker())
             {
-                for (int i=0; i<activeOrders.Count; i++)
+                ordersWorker.DoWork += OrdersWorker_DoWork;
+                ordersWorker.RunWorkerCompleted += OrdersWorker_RunWorkerCompleted;
+                ordersWorker.RunWorkerAsync();
+            }
+        }
+
+        private void OrdersWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ActiveOrders = CarwashOrder.GetActiveOrders(System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString());
+        }
+
+        private void OrdersWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ActiveOrders.Count > 0)
+            {
+                for (int i = 0; i < ActiveOrders.Count; i++)
                 {
-                    OrderLineControl order = new OrderLineControl(activeOrders[i]);
+                    OrderLineControl order = new OrderLineControl(ActiveOrders[i]);
                     order.endOrderBtn.Click += EndOrderBtn_Click;
                     order.updateOrderBtn.Click += UpdateOrderBtn_Click;
                     order.delOrderBtn.Click += DelOrderBtn_Click;
                     ordersPanel.Children.Add(order);
                 }
             }
+
+            loadBar.Visibility = Visibility.Hidden;
         }
 
         private void UpdateOrderBtn_Click(object sender, RoutedEventArgs e)
@@ -98,15 +119,31 @@ namespace CarwashManager
 
         private void UpdateBoxesPanel()
         {
+            loadBar.Visibility = Visibility.Visible;
             boxControlPanel.Children.Clear();
 
-            List<Box> boxes = new List<Box>();
-            DBWorker.BoxesSearch(System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString(), out boxes);
-            if (boxes != null && boxes.Count > 0)
+            using (BackgroundWorker boxesWorker = new BackgroundWorker())
             {
-                for (int i = 0; i < boxes.Count; i++)
+                boxesWorker.DoWork += BoxesWorker_DoWork;
+                boxesWorker.RunWorkerCompleted += BoxesWorker_RunWorkerCompleted;
+                boxesWorker.RunWorkerAsync();
+            }
+        }
+
+        private void BoxesWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var boxes = new List<Box>();
+            DBWorker.BoxesSearch(System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString(), out boxes);
+            Boxes = boxes;
+        }
+
+        private void BoxesWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (Boxes != null && Boxes.Count > 0)
+            {
+                for (int i = 0; i < Boxes.Count; i++)
                 {
-                    BoxControl box = new BoxControl(boxes[i]);
+                    BoxControl box = new BoxControl(Boxes[i]);
                     box.ConnStr = System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString();
                     box.deleteBtn.Click += DeleteBtn_Click;
                     box.changeStateBtn.Click += ChangeStateBtn_Click;
@@ -114,7 +151,9 @@ namespace CarwashManager
                     boxControlPanel.Children.Add(box);
                 }
             }
-        }
+
+            loadBar.Visibility = Visibility.Hidden;
+        }        
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {

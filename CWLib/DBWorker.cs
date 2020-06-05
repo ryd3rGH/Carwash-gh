@@ -230,21 +230,35 @@ namespace CWLib
             AddInitialUser("Директор", "Director", (int)dirCatId, connStr, entropy);
         }
 
-        public static List<string> FindUsers(string connStr)
+        public static List<User> FindUsers(string connStr)
         {
-            List<string> usersNames = new List<string>();
+            List<User> users = new List<User>();
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
 
-                SqlCommand findUsers = new SqlCommand("select LOGIN from [CARWASH].[dbo].[USERS] ORDER BY LOGIN", conn);
-                SqlDataReader dr = findUsers.ExecuteReader();
-                while (dr.Read())
-                    usersNames.Add(dr.GetString(0));
+                using (SqlCommand findUsers = new SqlCommand("select PERSONS.ID, USERS.LOGIN "+
+                                                            "from [CARWASH].[dbo].[WORKERS], [CARWASH].[dbo].[PERSONS], [CARWASH].[dbo].[USERS] " +
+                                                            "where WORKERS.ID_PERSON = PERSONS.ID "+
+                                                            "and USERS.ID_WORKER = WORKERS.ID "+
+                                                            "and(WORKERS.ID_WORKERS_CATEGORY = 1 or WORKERS.ID_WORKERS_CATEGORY = 0)", conn))
+                {
+                    using (SqlDataReader dr = findUsers.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            users.Add(new User() 
+                            { 
+                                Id = dr.GetInt32(0),
+                                LoginName = dr.GetString(1)
+                            });
+                        }
+                    }
+                }
             }
 
-            return usersNames;
+            return users;
         }
 
         public static bool Authentication(string connStr, string login, string pass, out int? id, string slt)
@@ -293,8 +307,8 @@ namespace CWLib
                                                 Name = dr.GetString(1), 
                                                 State = dr.GetValue(2) == DBNull.Value ? null : (bool?)dr.GetValue(2),
                                                 TechState = dr.GetValue(3) == DBNull.Value ? null : (bool?)dr.GetValue(3), 
-                                                OrderId = dr.GetValue(4) == DBNull.Value ? null : (int?)dr.GetValue(4), 
-                                                OrderType = dr.GetValue(5) == DBNull.Value ? null : (byte?)dr.GetValue(5) };
+                                                OrderId = dr.GetValue(4) == DBNull.Value ? null : (int?)dr.GetValue(4) 
+                                                /*  OrderType = dr.GetValue(5) == DBNull.Value ? null : (byte?)dr.GetValue(5) */ };
                         boxes.Add(box);
                     }
                 }

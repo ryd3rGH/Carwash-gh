@@ -14,6 +14,8 @@ using CWLib;
 using CarwashManager.Controls;
 using System.Resources;
 using System.Reflection;
+using System.ComponentModel;
+using System.Threading;
 
 namespace CarwashManager.Windows
 {
@@ -23,7 +25,9 @@ namespace CarwashManager.Windows
     public partial class CashboxWindow : Window, IWindow
     {
         private string ConnStr { get; set; }
-        private List<CashboxOperation> operations { get; set; }
+        private string StartDate { get; set; }
+        private string EndDate { get; set; }
+        private List<CashboxOperation> Operations { get; set; }
 
         public CashboxWindow()
         {
@@ -95,21 +99,47 @@ namespace CarwashManager.Windows
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             searchOperationsBtn_Click(null, null);
-            ShowOperations(operations);
+            ShowOperations(Operations);
         }
+
+        private void GetOperations()
+        {
+            searchGroupBox.IsEnabled = false;
+            actionsGroupBox.IsEnabled = false;
+            sumBox.IsEnabled = false;
+
+            StartDate = ((DateTime)startDateTxt.SelectedDate).ToString("yyyy-MM-dd 00:00:00");
+            EndDate = ((DateTime)endDateTxt.SelectedDate).ToString("yyyy-MM-dd 23:59:59");
+
+            using (BackgroundWorker operationsWorker = new BackgroundWorker())
+            {
+                operationsWorker.DoWork += OperationsWorker_DoWork;
+                operationsWorker.RunWorkerCompleted += OperationsWorker_RunWorkerCompleted;
+                operationsWorker.RunWorkerAsync();
+            }
+        }
+
+        private void OperationsWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Operations = CashboxOperation.GetOperations(ConnStr, StartDate, EndDate);
+            Thread.Sleep(1500);
+        }
+
+        private void OperationsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ShowOperations(Operations);
+
+            searchGroupBox.IsEnabled = true;
+            actionsGroupBox.IsEnabled = true;
+            sumBox.IsEnabled = true;
+        }        
 
         private void searchOperationsBtn_Click(object sender, RoutedEventArgs e)
         {
             if (startDateTxt.SelectedDate != null)
             {
-                if (endDateTxt.SelectedDate != null)
-                {
-                    operations = CashboxOperation.GetOperations(ConnStr,
-                        ((DateTime)startDateTxt.SelectedDate).ToString("yyyy-MM-dd 00:00:00"),
-                        ((DateTime)endDateTxt.SelectedDate).ToString("yyyy-MM-dd 23:59:59"));
-
-                    ShowOperations(operations);
-                }
+                if (endDateTxt.SelectedDate != null)                
+                    GetOperations();                
                 else
                     MessageBox.Show("Не указано окончание периода");
             }

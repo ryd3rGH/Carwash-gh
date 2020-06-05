@@ -17,37 +17,7 @@ namespace CWLib
         public Box()
         {
 
-        }
-
-        public override string ToString()
-        {
-            return Name;
-        }        
-
-        public static List<Box> GetBoxes(string connStr)
-        {
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-
-                List<Box> boxes = new List<Box>();
-
-                SqlCommand findBoxes = new SqlCommand($"select * from [CARWASH].[dbo].[BOXES] " +
-                                                        $"where VIS = 'true' and " +
-                                                        $"TECH_STATE = 'true' and " +
-                                                        $"STATE = 'true'", conn);
-                
-                using (SqlDataReader dr = findBoxes.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        boxes.Add(new Box(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), null, null));
-                    }
-                }
-
-                return boxes;
-            }
-        }
+        }      
 
         public Box(int id, string name, bool? state, bool? techState, int? orderId, byte? orderType)
         {
@@ -99,6 +69,11 @@ namespace CWLib
             }
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }        
+
         public bool ChangeTechState(string connStr)
         {
             bool newState = TechState == true ? false : true;
@@ -142,7 +117,64 @@ namespace CWLib
             }
         }
 
-        public bool SetBoxBusyState(string connStr, bool state)
+        public static List<Box> GetBoxes(string connStr)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+
+                List<Box> boxes = new List<Box>();
+
+                SqlCommand findBoxes = new SqlCommand($"select * from [CARWASH].[dbo].[BOXES] " +
+                                                        $"where VIS = 'true' and " +
+                                                        $"TECH_STATE = 'true' and " +
+                                                        $"STATE = 'true'", conn);
+
+                using (SqlDataReader dr = findBoxes.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        boxes.Add(new Box(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), dr.GetValue(4) == DBNull.Value ? null : (int?)dr.GetValue(4), null));
+                    }
+                }
+
+                return boxes;
+            }
+        }
+
+        public bool GetBoxInfoById(string connStr)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                
+                try
+                {
+                    using (SqlCommand findInfo = new SqlCommand($"select * from [CARWASH].[dbo].[BOXES] where ID = {Id}", conn))
+                    {
+                        using (SqlDataReader dr = findInfo.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Name = dr.GetString(1);
+                                State = dr.GetBoolean(2);
+                                TechState = dr.GetBoolean(3);
+                                OrderId = dr.GetValue(4) == DBNull.Value ? null : (int?)dr.GetValue(4);
+                            }
+                        }
+                    }
+
+                    return true;
+                }
+
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool SetBoxBusyState(string connStr, bool state, int? orderId, bool isCarwash)
         {
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -150,8 +182,10 @@ namespace CWLib
                 {
                     conn.Open();
 
+                    byte IsCarwash = (byte)(isCarwash == true ? 0 : 1);
+
                     using (SqlCommand setIsBusy = new SqlCommand($"update [CARWASH].[dbo].[BOXES] " +
-                                                                 $"set STATE = '{state}'" +
+                                                                 $"set STATE = '{state}', ID_ORDER = {orderId}, ORDER_TYPE = { IsCarwash }" +
                                                                  $"where ID = {Id}", conn))
                     {
                         setIsBusy.ExecuteNonQuery();

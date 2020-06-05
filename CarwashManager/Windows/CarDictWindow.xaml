@@ -20,7 +20,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DockPanel LastChildFill="True">
                         <CheckBox x:Name="customCategoriesChBox" Content="Использовать пользовательские категории авто:" FontSize="14" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Checked="customCategoriesChBox_Checked" Unchecked="customCategoriesChBox_Unchecked"/>
-                        <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Orientation="Horizontal">
+                        <StackPanel x:Name="btnsPanel" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Orientation="Horizontal">
                             <Button Content="Закрыть" FontSize="14" Height="30" Width="170" IsCancel="True" Margin="10,0,0,0"/>
                             <Button x:Name="addCatBtn" DockPanel.Dock="Bottom" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Content="Добавить категорию" FontSize="14" Height="30" Width="170" Click="addCatBtn_Click"/>
                         </StackPanel>
@@ -41,8 +41,8 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,10,0,9" DockPanel.Dock="Bottom" Height="32" VerticalAlignment="Bottom">
                             <Button IsCancel="True" FontSize="14" Height="30" Width="170" Content="Закрыть" Margin="10,0,10,0"/>
-                            <Button x:Name="addModelBtn" DockPanel.Dock="Bottom" Margin="0,0,10,0" HorizontalAlignment="Right" Height="32" Width="130" FontSize="14" Content="Добавить модель" Click="addModelBtn_Click" Visibility="Hidden"/>
-                            <Button x:Name="addBrandBtn" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Height="32" Width="130" FontSize="14" Content="Добавить марку" Click="addBrandBtn_Click" Visibility="Hidden"/>                        
+                            <Button x:Name="addModelBtn" DockPanel.Dock="Bottom" Margin="0,0,10,0" HorizontalAlignment="Right" Height="32" Width="130" FontSize="14" Content="Добавить модель" Visibility="Hidden"/>
+                            <Button x:Name="addBrandBtn" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Height="32" Width="130" FontSize="14" Content="Добавить марку" Visibility="Hidden"/>                        
                         </StackPanel>
                         <DockPanel x:Name="contentPanel" Margin="10,10,10,0" LastChildFill="True">
                             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">

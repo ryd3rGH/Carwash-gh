@@ -16,6 +16,7 @@ namespace CWLib
         public List<Worker> Workers { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime? EstimatedEndTime { get; set; }
-        public DateTime? RealEndTime { get; set; }        
+        public DateTime? RealEndTime { get; set; }
+        public int AdmId { get; set; }
     }
 }

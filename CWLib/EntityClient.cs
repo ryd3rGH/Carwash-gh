@@ -73,7 +73,7 @@ namespace CWLib
             {
                 conn.Open();
 
-                using (SqlCommand findClientCarId = new SqlCommand($"select ID from [CARWASH].[dbo].[CLIENT_CAR] " +
+                using (SqlCommand findClientCarId = new SqlCommand($"select ID from [CARWASH].[dbo].[CLIENT_CARS] " +
                                                                     $"where PLATE = '{licPlate}' and ID_CAR_MODEL = {idModel}", conn))
                 {
                     return (int)findClientCarId.ExecuteScalar();

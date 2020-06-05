@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,7 +24,8 @@ namespace CarwashManager.Windows
     /// </summary>
     public partial class LoginWindow : Window, IWindow
     {
-        string ConnStr { get; set; }
+        private string ConnStr { get; set; }
+        private List<User> usersNames { get; set; }
 
         public LoginWindow()
         {
@@ -30,15 +33,8 @@ namespace CarwashManager.Windows
 
             SetWindowBackGround();
             SetWindowTitle();
-            SetFontSize();
 
             ConnStr = System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString();
-        }
-
-        public void SetFontSize()
-        {
-            for (int i = 0; i < mainGrid.Children.Count; i++)
-                ((Control)mainGrid.Children[i]).FontSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["MainFontSize"]);
         }
 
         public void SetWindowBackGround()
@@ -53,15 +49,36 @@ namespace CarwashManager.Windows
             this.Title = rm.GetString("LoginWindowName");
         }
 
+        private void SetUserRegistryKey(User user)
+        {
+            RegistryKey sltKey = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\CWM");
+            sltKey.SetValue("User", user.Id);
+            sltKey.Close();
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> usersNames = DBWorker.FindUsers(ConnStr);
-            if (usersNames.Count > 0)
+            mainGrid.IsEnabled = false;
+            using (BackgroundWorker uWorker = new BackgroundWorker())
             {
-                for (int i = 0; i < usersNames.Count; i++)
-                    loginsComboBox.Items.Add(usersNames[i]);
+                uWorker.DoWork += UWorker_DoWork;
+                uWorker.RunWorkerCompleted += UWorker_RunWorkerCompleted;
+                uWorker.RunWorkerAsync();
             }
         }
+
+        private void UWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            usersNames = DBWorker.FindUsers(ConnStr);
+        }
+
+        private void UWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (usersNames.Count > 0)            
+                loginsComboBox.ItemsSource = usersNames;
+
+            mainGrid.IsEnabled = true;
+        }        
 
         private void enterBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -72,8 +89,10 @@ namespace CarwashManager.Windows
                     if (passTxt.Password.Length > 0 && !String.IsNullOrEmpty(passTxt.Password) && !String.IsNullOrWhiteSpace(passTxt.Password))
                     {
                         int? workerId;
-                        if (DBWorker.Authentication(ConnStr, loginsComboBox.Text, passTxt.Password, out workerId, Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("SLT").ToString()))
+                        if (DBWorker.Authentication(ConnStr, ((User)loginsComboBox.SelectedItem).LoginName, passTxt.Password, out workerId, Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CWM").GetValue("SLT").ToString()))
                         {
+                            SetUserRegistryKey((User)loginsComboBox.SelectedItem);
+
                             MainWindow main = new MainWindow();
                             main.WorkerId = (int)workerId;
                             this.Close();

@@ -12,7 +12,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="0,0,0,12">
-            <GroupBox Header="Параметры поиска"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="200" Margin="10,10,0,0" FontSize="14" BorderBrush="#FFA6A6A6">
+            <GroupBox x:Name="searchGroupBox" Header="Параметры поиска"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="200" Margin="10,10,0,0" FontSize="14" BorderBrush="#FFA6A6A6">
                 <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="32"/>
@@ -28,7 +28,7 @@
                     <Button x:Name="searchOperationsBtn" Content="Поиск" FontSize="14" Grid.Row="4" Height="30" VerticalAlignment="Bottom" Margin="8,0,8,2" Click="searchOperationsBtn_Click"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Действия"  HorizontalAlignment="Stretch" Margin="10,25,0,0" FontSize="14" BorderBrush="#FFA6A6A6">
+            <GroupBox x:Name="actionsGroupBox" Header="Действия"  HorizontalAlignment="Stretch" Margin="10,25,0,0" FontSize="14" BorderBrush="#FFA6A6A6">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="32*"/>
