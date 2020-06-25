@@ -10,8 +10,38 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\add.png" />
-    <None Remove="Resources\Images\pencil.png" />
+    <None Remove="Resources\Images\Accept.png" />
+    <None Remove="Resources\Images\AddClient.png" />
+    <None Remove="Resources\Images\AddClientsGroup.png" />
+    <None Remove="Resources\Images\AddMoney.png" />
+    <None Remove="Resources\Images\AddWorker.png" />
+    <None Remove="Resources\Images\Box\Box1.png" />
+    <None Remove="Resources\Images\Cars.png" />
+    <None Remove="Resources\Images\Cashbox.png" />
+    <None Remove="Resources\Images\Check.png" />
+    <None Remove="Resources\Images\Clients.png" />
+    <None Remove="Resources\Images\Delete.png" />
+    <None Remove="Resources\Images\Edit.png" />
+    <None Remove="Resources\Images\Enter.png" />
+    <None Remove="Resources\Images\Logo_b.png" />
+    <None Remove="Resources\Images\Logo_s.png" />
+    <None Remove="Resources\Images\NewCarwashOrder.png" />
+    <None Remove="Resources\Images\Refresh.png" />
+    <None Remove="Resources\Images\Rejection.png" />
+    <None Remove="Resources\Images\RemoveMoney.png" />
+    <None Remove="Resources\Images\Save.png" />
+    <None Remove="Resources\Images\Search.png" />
+    <None Remove="Resources\Images\Services.png" />
+    <None Remove="Resources\Images\Workers.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\AddWorker.png" />
+    <Resource Include="Resources\Images\Check.png" />
+    <Resource Include="Resources\Images\Enter.png" />
+    <Resource Include="Resources\Images\Logo_b.png" />
+    <Resource Include="Resources\Images\Logo_s.png" />
+    <Resource Include="Resources\Images\Refresh.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,11 +49,50 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\add.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Resource Include="Resources\Images\Accept.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\pencil.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Resource Include="Resources\Images\AddClient.png" />
+    <Resource Include="Resources\Images\AddClientsGroup.png" />
+    <Resource Include="Resources\Images\AddMoney.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Box\Box1.png" />
+    <Resource Include="Resources\Images\Cars.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Cashbox.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Clients.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Delete.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Edit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\NewCarwashOrder.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Rejection.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\RemoveMoney.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Save.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Search.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Services.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Workers.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

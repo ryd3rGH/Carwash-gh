@@ -155,8 +155,7 @@ namespace CarwashManager.Windows
 
             if (WorkerToUpdate != null)
             {
-                addBtn.Content = "Сохранить";
-
+                addBtn.Style = this.FindResource("SaveButton") as Style;
                 nameTxt.Text = WorkerToUpdate.Name;
                 phoneTxt.Text = WorkerToUpdate.Phone;
                 emailTxt.Text = WorkerToUpdate.Email;
@@ -171,8 +170,10 @@ namespace CarwashManager.Windows
                 {
                     if (((WorkersCategory)groupList.Items[i]).GroupId == WorkerToUpdate.WorkerCategory.GroupId)
                         groupList.SelectedItem = groupList.Items[i];
-                }
+                }               
             }
+            else            
+                addBtn.Style = this.FindResource("AddWorkerButton") as Style;            
         }
 
         private void groupList_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -10,6 +10,7 @@ namespace CWLib
     public class CarwashOrder : OrderBase, IOrder
     {
         public int IdClientsCar { get; set; }
+        public string ClientsCarPlate { get; set; }
         public bool? IsShineWeather { get; set; }
         public List<Discount> Discounts { get; set; }
         public List<CarwashService> Services { get; set; }
@@ -392,13 +393,14 @@ namespace CWLib
 
                         /* Поиск сотрудников в активных заказах */
                         orders[i].Workers = Worker.GetWorkersInOrder(connStr, (int)orders[i].Id);
-                    }
-                }
 
-                
+                        using (SqlCommand findPlate = new SqlCommand($"select PLATE from [CARWASH].[dbo].[CLIENT_CARS] where ID = {orders[i].IdClientsCar}", conn))
+                            orders[i].ClientsCarPlate = (string)findPlate.ExecuteScalar();
+                    }
+                }                
             }
 
             return orders;
-        }        
+        }
     }
 }

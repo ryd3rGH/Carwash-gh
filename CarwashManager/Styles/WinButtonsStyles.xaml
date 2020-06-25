@@ -1,0 +1,329 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CarwashManager.Styles">
+    
+    <Style x:Key="AcceptButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="..\Resources\Images\Accept.png" Margin="5,5,2,5"/>
+                    <TextBlock x:Name="Text" Text="Добавить" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CancelButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="110"/>        
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Rejection.png" Margin="5,5,7,5"/>
+                        <TextBlock x:Name="Text" Text="Отмена" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NextButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Check.png" Margin="5,5,7,5"/>
+                        <TextBlock x:Name="Text" Text="Далее" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DeleteButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="..\Resources\Images\Delete.png" Margin="2,2,2,2"/>
+                    <TextBlock x:Name="Text" Text="Удалить" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SaveButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="..\Resources\Images\Save.png" Margin="2,5,5,5"/>
+                    <TextBlock x:Name="Text" Text="Сохранить" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SearchButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="..\Resources\Images\Search.png" Margin="2,5,10,5"/>
+                    <TextBlock x:Name="Text" Text="Поиск" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddMoneyButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\AddMoney.png" Margin="2,5,5,5"/>
+                        <TextBlock x:Name="Text" Text="Добавить приход" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RemoveMoneyButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\RemoveMoney.png" Margin="2,5,5,5"/>
+                        <TextBlock x:Name="Text" Text="Добавить расход" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>    
+
+    <Style x:Key="AddClientButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\AddClient.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Добавить клиента" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddClientsGroupButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\AddClientsGroup.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Добавить группу клиентов" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddClientsCarButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Cars.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Добавить авто" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddClientsCarGroupButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\AddWorker.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Добавить категорию" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddWorkerButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\AddWorker.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Добавить работника" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EditButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Edit.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Редактировать" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddServiceTypeButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Services.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Добавить тип" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddServiceButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Services.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Добавить услугу" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EditServiceButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Services.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Сохранить" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddOrderButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\NewCarwashOrder.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Оформить" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EnterButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Enter.png" Margin="2,2,10,2"/>
+                        <TextBlock x:Name="Text" Text="Войти" FontSize="14" FontWeight="SemiBold" Foreground="#FF4D4D4D" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SimpleTextButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#FF4D4D4D"/>        
+    </Style>
+
+    <!--Small buttons-->
+
+    <Style x:Key="EditSmallButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="..\Resources\Images\Edit.png" Margin="1"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DeleteSmallButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="..\Resources\Images\Delete.png" Margin="1"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RefreshSmallButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Refresh.png" Margin="1,2,4,2"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CompleteSmallButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Resources\Images\Check.png" Margin="1,2,4,2"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

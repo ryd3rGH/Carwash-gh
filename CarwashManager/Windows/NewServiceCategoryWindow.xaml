@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="NewServiceCategoryWindow" Height="250" Width="445" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid x:Name="mainGrid">
-        <Label Content="Добавление новой категории услуг" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Label Content="Добавление новой категории услуг" Style="{StaticResource Label}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
         <Grid Margin="0,45,0,50">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="129*"/>
                 <ColumnDefinition Width="319*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Название: " HorizontalAlignment="Right" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="78"/>
+            <Label Content="Название: " HorizontalAlignment="Right" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource Label}"/>
             <Label Content="Тех. состояние: " HorizontalAlignment="Right" Margin="0,70,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="110" Visibility="Hidden"/>
             <TextBox x:Name="nameTxt" FontSize="14" Grid.Column="1" HorizontalAlignment="Left" Margin="20,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="25"/>
             <RadioButton x:Name="IsWorkingBtn" Content="Работает" Grid.Column="1" HorizontalAlignment="Left" Margin="20,77,0,0" VerticalAlignment="Top" FontSize="14" GroupName="techState" IsChecked="True" Visibility="Hidden"/>
             <RadioButton x:Name="IsNotWorkingBtn" Content="В ремонте" Grid.Column="1" HorizontalAlignment="Left" Margin="149,77,0,0" VerticalAlignment="Top" FontSize="14" GroupName="techState" Visibility="Hidden"/>
         </Grid>
-        <Button x:Name="cancelBtn" Content="Отмена" FontSize="14" HorizontalAlignment="Right" Margin="0,0,20,15" VerticalAlignment="Bottom" IsCancel="True" Width="85" Height="30"/>
-        <Button x:Name="addBtn" Content="Добавить" FontSize="14" HorizontalAlignment="Right" Margin="0,0,122,15" VerticalAlignment="Bottom" IsDefault="True" Width="85" Height="30" Click="addBtn_Click"/>
+        <Button x:Name="cancelBtn" Style="{StaticResource CancelButton}" HorizontalAlignment="Right" Margin="0,0,20,15" VerticalAlignment="Bottom" IsCancel="True" Width="150"/>
+        <Button x:Name="addBtn" Style="{StaticResource AddServiceTypeButton}" HorizontalAlignment="Left" Margin="115,0,0,15" VerticalAlignment="Bottom" IsDefault="True" Width="150" Click="addBtn_Click"/>
     </Grid>
 </Window>

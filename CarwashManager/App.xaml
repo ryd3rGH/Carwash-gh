@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:CarwashManager"
              StartupUri="Windows/LaunchWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\LabelTextStyle.xaml"/>
+                <ResourceDictionary Source="Styles\DifferentControls.xaml"/>
+                <ResourceDictionary Source="Styles\RoundButton.xaml"/>
+                <ResourceDictionary Source="Styles\RectangleStyle.xaml"/>
+                <ResourceDictionary Source="Styles\WinButtonsStyles.xaml"/>
+                <ResourceDictionary Source="Styles\InvisibleRectagleStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

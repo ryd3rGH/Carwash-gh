@@ -207,7 +207,9 @@ namespace CarwashManager.Windows
 
                 nameTxt.Text = ServiceToUpdate.Name;
                 durationTxt.Text = ServiceToUpdate.Duration.Minutes.ToString();
-                descrTxt.Text = ServiceToUpdate.Description;                
+                descrTxt.Text = ServiceToUpdate.Description;
+
+                addBtn.Style = this.FindResource("EditServiceButton") as Style;
 
                 for (int i = 0; i < typeList.Items.Count; i++)
                 {

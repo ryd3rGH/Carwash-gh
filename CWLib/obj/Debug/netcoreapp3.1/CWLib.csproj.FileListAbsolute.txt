@@ -33,3 +33,14 @@ F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.dll
 F:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.pdb
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileInputs.cache
 G:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csprojAssemblyReference.cache
+D:\db\CSharpCodeProjects\CWLib\bin\Debug\netcoreapp3.1\CWLib.deps.json
+D:\db\CSharpCodeProjects\CWLib\bin\Debug\netcoreapp3.1\CWLib.dll
+D:\db\CSharpCodeProjects\CWLib\bin\Debug\netcoreapp3.1\CWLib.pdb
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.Resources.DBTables.resources
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.Resources.XMLResources.resources
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.GenerateResource.cache
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.AssemblyInfoInputs.cache
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.AssemblyInfo.cs
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.csproj.CoreCompileInputs.cache
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.dll
+D:\db\CSharpCodeProjects\CWLib\obj\Debug\netcoreapp3.1\CWLib.pdb

@@ -26,20 +26,20 @@
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Полное наименование:" Grid.Row="0" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="1" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Юридический адрес:" Grid.Row="2" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Фактический адрес:" Grid.Row="3" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="ИНН:" Grid.Row="4" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="ОГРН:" Grid.Row="4" Grid.Column="2"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Рассчетный счет:" Grid.Row="5" Grid.Column="0" />
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Корр. счет:" Grid.Row="5" Grid.Column="2"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="БИК:" Grid.Row="6" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Директор:" Grid.Row="7" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Глав. бух-р:" Grid.Row="7" Grid.Column="2"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Контактное лицо:" Grid.Row="8" Grid.Column="0" />
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="8" Grid.Column="2"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Автомобили:" Grid.Row="9" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Полное наименование:" Grid.Row="0" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Телефон:" Grid.Row="1" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Юридический адрес:" Grid.Row="2" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Фактический адрес:" Grid.Row="3" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="ИНН:" Grid.Row="4" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="ОГРН:" Grid.Row="4" Grid.Column="2"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Рассчетный счет:" Grid.Row="5" Grid.Column="0" />
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Корр. счет:" Grid.Row="5" Grid.Column="2"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="БИК:" Grid.Row="6" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Директор:" Grid.Row="7" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Глав. бух-р:" Grid.Row="7" Grid.Column="2"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Контактное лицо:" Grid.Row="8" Grid.Column="0" />
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Телефон:" Grid.Row="8" Grid.Column="2"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Автомобили:" Grid.Row="9" Grid.Column="0"/>
         <TextBox x:Name="nameTxt" FontSize="14" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2"/>
         <TextBox x:Name="phoneTxt" FontSize="14" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2" MaxLength="12" PreviewTextInput="phoneTxt_PreviewTextInput"/>
         <TextBox x:Name="laTxt" FontSize="14" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,14,0,2"/>

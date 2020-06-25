@@ -226,5 +226,31 @@ namespace CWLib
                 }
             }
         }
+
+        public bool UpdateBox(string connStr, string newBoxName, bool state, bool newTechState)
+        {
+            Name = newBoxName;
+            State = state;
+            TechState = newTechState;
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (SqlCommand updateBox = new SqlCommand($"update [CARWASH].[dbo].[BOXES] " +
+                                                                 $"set BOX_NAME = '{Name}', STATE = {State}, TECH_STATE = '{TechState}' " +
+                                                                 $"where ID = {Id}", conn))
+                        updateBox.ExecuteNonQuery();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

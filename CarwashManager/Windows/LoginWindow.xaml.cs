@@ -93,10 +93,15 @@ namespace CarwashManager.Windows
                         {
                             SetUserRegistryKey((User)loginsComboBox.SelectedItem);
 
-                            MainWindow main = new MainWindow();
-                            main.WorkerId = (int)workerId;
+                            //MainWindow main = new MainWindow();
+                            //main.WorkerId = (int)workerId;
+                            //this.Close();
+                            //main.ShowDialog();   
+
+                            CWMainWindow main = new CWMainWindow();
+                            main.PersonId = (int)workerId;
                             this.Close();
-                            main.ShowDialog();                            
+                            main.ShowDialog();
                         }
                         else
                         {

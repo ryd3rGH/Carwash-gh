@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\db\CSharpCodeProjects\CarwashManager\obj\Debug\netcoreapp3.1\
+D:\db\CSharpCodeProjects\CarwashManager\obj\Debug\netcoreapp3.1\
 CarwashManager
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-G:\db\CSharpCodeProjects\CarwashManager\App.xaml
-3482826007
+D:\db\CSharpCodeProjects\CarwashManager\App.xaml
+44-1777435700
 
-43-2081312492
-1941782665121
-Controls\BoxControl.xaml;Controls\CashboxOperationControl.xaml;Controls\CategoryControl.xaml;Controls\ClassPriceControl.xaml;Controls\ClientCarControl.xaml;Controls\ClientEntityDetailsControl.xaml;Controls\ClientGroupBigControl.xaml;Controls\ClientPhysDetailsControl.xaml;Controls\NewEntityClientControl.xaml;Controls\NewPhysClientControl.xaml;Controls\OrderLineControl.xaml;Controls\OrderServiceControl.xaml;Controls\OrderWorkerControl.xaml;Controls\WorkerDetailsControl.xaml;MainWindow.xaml;SettingsWindow.xaml;Windows\CarDictWindow.xaml;Windows\CashboxWindow.xaml;Windows\ClientsDictWindow.xaml;Windows\LaunchWindow.xaml;Windows\LoginWindow.xaml;Windows\NewBoxWindow.xaml;Windows\NewCarwashOrderLicenceWindow.xaml;Windows\NewCarwashOrderWindow.xaml;Windows\NewCarwashServiceWindow.xaml;Windows\NewCashboxOperationWindow.xaml;Windows\NewCategoryWindow.xaml;Windows\NewClientCarsWindow.xaml;Windows\NewClientsGroupWindow.xaml;Windows\NewClientWindow.xaml;Windows\NewServiceCategoryWindow.xaml;Windows\NewWorkerWindow.xaml;Windows\ServicesDictWindow.xaml;Windows\WorkersDictWindow.xaml;
+471808635490
+194711059292
+Controls\BoxControl.xaml;Controls\BoxModControl.xaml;Controls\CashboxOperationControl.xaml;Controls\CategoryControl.xaml;Controls\ClassPriceControl.xaml;Controls\ClientCarControl.xaml;Controls\ClientEntityDetailsControl.xaml;Controls\ClientGroupBigControl.xaml;Controls\ClientPhysDetailsControl.xaml;Controls\NewEntityClientControl.xaml;Controls\NewOrderLineControl.xaml;Controls\NewPhysClientControl.xaml;Controls\OrderLineControl.xaml;Controls\OrderServiceControl.xaml;Controls\OrderWorkerControl.xaml;Controls\WorkerDetailsControl.xaml;MainWindow.xaml;SettingsWindow.xaml;Styles\DifferentControls.xaml;Styles\InvisibleRectagleStyle.xaml;Styles\LabelTextStyle.xaml;Styles\RectangleStyle.xaml;Styles\RoundButton.xaml;Styles\WinButtonsStyles.xaml;Windows\CarDictWindow.xaml;Windows\CashboxWindow.xaml;Windows\ClientsDictWindow.xaml;Windows\CWMainWindow.xaml;Windows\LaunchWindow.xaml;Windows\LoginWindow.xaml;Windows\NewBoxModWindow.xaml;Windows\NewBoxWindow.xaml;Windows\NewCarwashOrderLicenceWindow.xaml;Windows\NewCarwashOrderWindow.xaml;Windows\NewCarwashServiceWindow.xaml;Windows\NewCashboxOperationWindow.xaml;Windows\NewCategoryWindow.xaml;Windows\NewClientCarsWindow.xaml;Windows\NewClientsGroupWindow.xaml;Windows\NewClientWindow.xaml;Windows\NewServiceCategoryWindow.xaml;Windows\NewWorkerWindow.xaml;Windows\ServicesDictWindow.xaml;Windows\WorkersDictWindow.xaml;
 
-False
+True
 

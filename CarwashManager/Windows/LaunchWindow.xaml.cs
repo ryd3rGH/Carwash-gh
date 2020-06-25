@@ -33,12 +33,6 @@ namespace CarwashManager.Windows
             InitializeComponent();
         }
 
-        public void SetFontSize()
-        {
-            for (int i = 0; i < mainGrid.Children.Count; i++)
-                ((Control)mainGrid.Children[i]).FontSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["MainFontSize"]);
-        }
-
         public void SetWindowBackGround()
         {
             var bc = new BrushConverter();
@@ -55,10 +49,6 @@ namespace CarwashManager.Windows
         {
             ConnStr = System.Configuration.ConfigurationManager.AppSettings["ConnString"].ToString();
             SetWindowTitle();
-            SetFontSize();
-
-            /* TODO: сделать все нижеописанные операции в потоках, чтоб не фризило интерфейс */
-            /* TODO: облагородить интерфейс */
 
             using (BackgroundWorker launchWorker = new BackgroundWorker())
             {

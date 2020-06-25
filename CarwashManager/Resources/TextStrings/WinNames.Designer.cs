@@ -124,6 +124,15 @@ namespace CarwashManager.Resources.TextStrings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добавление нового бокса.
+        /// </summary>
+        internal static string NewBoxLabelText {
+            get {
+                return ResourceManager.GetString("NewBoxLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Новый бокс.
         /// </summary>
         internal static string NewBoxWindowName {
@@ -219,6 +228,15 @@ namespace CarwashManager.Resources.TextStrings {
         internal static string ServicesDictWindowName {
             get {
                 return ResourceManager.GetString("ServicesDictWindowName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование информации о боксе.
+        /// </summary>
+        internal static string UpdateBoxLabelText {
+            get {
+                return ResourceManager.GetString("UpdateBoxLabelText", resourceCulture);
             }
         }
         

@@ -28,6 +28,6 @@
         <Label x:Name="descrLbl" FontSize="14" VerticalAlignment="Center" Grid.Column="2"/>
         <Label x:Name="moneyLbl" FontSize="14" VerticalAlignment="Center" Grid.Column="3"/>
         <Label x:Name="sumLbl" FontSize="14" VerticalAlignment="Center" Grid.Column="4"/>
-        <Button x:Name="deleteBtn" Content="DEL" FontSize="14" Grid.Column="5" Margin="2,2,2,2" Click="deleteBtn_Click"/>
+        <Button x:Name="deleteBtn" Style="{StaticResource DeleteSmallButton}" Grid.Column="5" Margin="2,2,2,2" Click="deleteBtn_Click"/>
     </Grid>
 </UserControl>

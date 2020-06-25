@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SJPGD5K/1QqHFLXEhRk24y0gXSEX704VQCfIkGDb6MT5AH4fiy0nRNfeDwe9CO3CccDzOLw/Bf3RguyQ/DYnGA==",
+  "dgSpecHash": "tfvIR+T2O3HA0pNk42ocO/E/EoFzXjZbBsHHuy/PVsE7oqrOQ4MvO4YRtqVHAlkWbXuc/j69V47iQgrtTorvSg==",
   "success": true,
-  "projectFilePath": "G:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj",
+  "projectFilePath": "D:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Fridayff.EDUCATION\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

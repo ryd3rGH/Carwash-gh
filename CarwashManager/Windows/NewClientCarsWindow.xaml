@@ -5,23 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarwashManager.Windows"
         mc:Ignorable="d"
-        Title="NewClientCarsWindow" Height="450" Width="835" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="NewClientCarsWindow" Height="450" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
-        <DockPanel LastChildFill="True">
-            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" DockPanel.Dock="Top" Height="34" Orientation="Horizontal" Margin="10,3,10,0">
-                <Label FontSize="14" Content="Марка:" VerticalContentAlignment="Bottom" />
-                <ComboBox x:Name="brandsList" FontSize="14" Width="150" Margin="10,7,0,2" IsEditable="True" SelectionChanged="brandsList_SelectionChanged"/>
-                <Label FontSize="14" Content="Модель:" VerticalContentAlignment="Bottom" Margin="10,0,0,0"/>
-                <ComboBox x:Name="modelsList" FontSize="14" Width="200" Margin="10,7,0,2" IsEditable="True"/>
-                <Label FontSize="14" Content="Гос.номер:" VerticalContentAlignment="Bottom" Margin="10,0,0,0"></Label>
-                <TextBox x:Name="plateTxt" Width="90" Margin="10,7,0,2"/>
-                <Button x:Name="addCarBtn" HorizontalAlignment="Right" Width="90" Content="Добавить" FontSize="14" IsDefault="True" Click="addCarBtn_Click" Margin="20,7,0,2"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2,0,0,-3" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-35,0,-2,-5" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <DockPanel LastChildFill="True" Grid.ColumnSpan="2">
+            <StackPanel x:Name="topPanel" HorizontalAlignment="Stretch" VerticalAlignment="Top" DockPanel.Dock="Top"  Orientation="Horizontal" Margin="10,3,10,0">
+                <Label Style="{StaticResource Label}" Content="Марка:" VerticalContentAlignment="Bottom" />
+                <ComboBox x:Name="brandsList" FontSize="14" Width="150" Margin="10,14,0,2" IsEditable="True" SelectionChanged="brandsList_SelectionChanged"/>
+                <Label Style="{StaticResource Label}" Content="Модель:" VerticalContentAlignment="Bottom" Margin="10,0,0,0"/>
+                <ComboBox x:Name="modelsList" FontSize="14" Width="200" Margin="10,14,0,2" IsEditable="True"/>
+                <Label Style="{StaticResource Label}" Content="Гос.номер:" VerticalContentAlignment="Bottom" Margin="10,0,0,0"></Label>
+                <TextBox x:Name="plateTxt" Width="90" Margin="10,14,0,2"/>
+                <Button x:Name="addCarBtn" HorizontalAlignment="Right" Style="{StaticResource AddClientsCarButton}" IsDefault="True" Click="addCarBtn_Click" Margin="20,7,0,0"/>
             </StackPanel>
             <Grid DockPanel.Dock="Top" Height="32" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,10,0,0">
-                <Label FontSize="14" Content="Автомобили клиента:"/>
+                <Label Style="{StaticResource Label}" Content="Автомобили клиента:"/>
             </Grid>
-            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Height="34" FlowDirection="RightToLeft" Margin="10,0,10,10">
-                <Button HorizontalAlignment="Left" Margin="0,7,10,2" Width="120" FontSize="14" Content="Закрыть" IsCancel="True"/>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Height="34" Margin="10,0,10,10">
+                <Button HorizontalAlignment="Left" Width="120" Style="{StaticResource CancelButton}" IsCancel="True"/>
             </StackPanel>
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,0,10,10" Background="LightGray">

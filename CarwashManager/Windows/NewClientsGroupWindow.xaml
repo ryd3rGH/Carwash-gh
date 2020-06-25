@@ -7,18 +7,26 @@
         mc:Ignorable="d"
         Title="NewClientsGroupWindow" Height="250" Width="445" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid x:Name="mainGrid">
-        <Label Content="Добавление новой группы клиентов" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
-        <Grid Margin="0,45,0,50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="129"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2,0,0,-3" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-35,0,-2,-5" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Label Content="Добавление новой группы клиентов" Style="{StaticResource Label}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Grid.ColumnSpan="2"/>
+        <Grid Margin="0,45,0,50" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="129*"/>
                 <ColumnDefinition Width="319*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Название: " HorizontalAlignment="Right" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="78"/>
-            <Label Content="Размер скидки: " HorizontalAlignment="Right" Margin="0,70,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="110"/>
+            <Label Content="Название: " HorizontalAlignment="Right" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource Label}"/>
+            <Label Content="Размер скидки: " HorizontalAlignment="Right" Margin="0,70,0,0" VerticalAlignment="Top" Style="{StaticResource Label}"/>
             <TextBox x:Name="groupNameTxt" FontSize="14" Grid.Column="1" HorizontalAlignment="Left" Margin="20,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="25"/>
             <Slider Name="discSlider" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20, 75,20,0" Minimum="0" Maximum="100" Value="0" TickFrequency="1" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" IsSnapToTickEnabled="True"/>
         </Grid>
-        <Button x:Name="cancelBtn" Content="Отмена" FontSize="14" HorizontalAlignment="Right" Margin="0,0,20,15" VerticalAlignment="Bottom" IsCancel="True" Width="85" Height="30"/>
-        <Button x:Name="addBtn" Content="Добавить" FontSize="14" HorizontalAlignment="Right" Margin="0,0,122,15" VerticalAlignment="Bottom" IsDefault="True" Width="85" Height="30" Click="addBtn_Click"/>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,10,10">
+            <Button x:Name="addBtn" Style="{StaticResource AcceptButton}" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsDefault="True" Width="100" Click="addBtn_Click"/>
+            <Button x:Name="cancelBtn" Style="{StaticResource CancelButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsCancel="True" Width="100" />            
+        </StackPanel>
     </Grid>
 </Window>

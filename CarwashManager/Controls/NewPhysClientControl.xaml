@@ -20,13 +20,13 @@
             <RowDefinition Height="0.3*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Ф.И.О.:" Grid.Row="0" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="1" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="E-mail:" Grid.Row="2" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Дата рождения:" Grid.Row="3" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Группа клиентов:" Grid.Row="4" Grid.Column="0"/>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Content="Автомобиль:" Grid.Row="5" Grid.Column="0"/>
-        <Label VerticalAlignment="Top" Margin="0,20,0,0" HorizontalAlignment="Right" FontSize="14" Content="Комментарий:" Grid.Row="6" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Ф.И.О.:" Grid.Row="0" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Телефон:" Grid.Row="1" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="E-mail:" Grid.Row="2" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Дата рождения:" Grid.Row="3" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Группа клиентов:" Grid.Row="4" Grid.Column="0"/>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Автомобиль:" Grid.Row="5" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" Margin="0,20,0,0" HorizontalAlignment="Right" Style="{StaticResource Label}" Content="Комментарий:" Grid.Row="6" Grid.Column="0"/>
         <TextBox x:Name="nameTxt" FontSize="14" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>
         <TextBox x:Name="phoneTxt" FontSize="14" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3" MaxLength="12" PreviewTextInput="phoneTxt_PreviewTextInput"/>
         <TextBox x:Name="mailTxt" FontSize="14" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Bottom" Width="300" HorizontalAlignment="Left" Margin="15,20,0,3"/>

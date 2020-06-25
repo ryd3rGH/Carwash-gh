@@ -7,14 +7,20 @@
         mc:Ignorable="d"
         Title="NewClientWindow" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid x:Name="mainGrid">
-        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2,0,0,-3" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-35,0,-2,-5" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True" Grid.ColumnSpan="2">
             <StackPanel Name="topBtnsPanel" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Orientation="Horizontal" Margin="0,0,0,10">
                 <RadioButton x:Name="phBtn" Content="Физ. лицо" IsChecked="True" GroupName="IsPhys" Margin="35,10,0,0" FontSize="14" Checked="phBtn_Checked" Unchecked="phBtn_Unchecked"/>
                 <RadioButton x:Name="entBtn" Content="Юр. лицо" GroupName="IsPhys" Margin="35,10,0,0" FontSize="14"/>
             </StackPanel>
-            <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10">
-                <Button Content="Отмена" Width="100" Height="32" IsCancel="True" FontSize="14"/>
-                <Button x:Name="addBtn" Content="Добавить" Width="100" Height="32" Margin="10,0,0,0" FontSize="14" IsDefault="True" Click="addBtn_Click"></Button>
+            <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">                
+                <Button x:Name="addBtn" Width="170" Height="32" IsDefault="True" Click="addBtn_Click"/>
+                <Button Width="170" Height="32" IsCancel="True" Margin="10,0,0,0" Style="{StaticResource CancelButton}"/>
             </StackPanel>
             <Grid x:Name="contentGrid" Margin="10,0,10,0"/>
         </DockPanel>

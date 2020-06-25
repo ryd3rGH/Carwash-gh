@@ -239,7 +239,7 @@ namespace CarwashManager.Windows
             if (IndivClient != null || EntityClient != null)
             {
                 topBtnsPanel.IsEnabled = false;
-                addBtn.Content = "Сохранить";
+                addBtn.Style = this.FindResource("SaveButton") as Style;
 
                 if (IndivClient != null)                
                     phBtn.IsChecked = true;
@@ -247,6 +247,8 @@ namespace CarwashManager.Windows
                 if (EntityClient != null)
                     entBtn.IsChecked = true;
             }
+            else
+                addBtn.Style = this.FindResource("AddClientButton") as Style;
         }
     }
 }

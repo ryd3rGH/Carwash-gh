@@ -5,11 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarwashManager.Windows"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="420" Width="440" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="LoginWindow" Height="206" Width="622" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid x:Name="mainGrid">
-        <ComboBox x:Name="loginsComboBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="236" IsReadOnly="True" Margin="0,235,0,0" FontSize="14"/>
-        <PasswordBox x:Name="passTxt" HorizontalAlignment="Center" Margin="0,273,0,0" VerticalAlignment="Top" Width="236" FontSize="14" Height="24.62"/>
-        <Button x:Name="enterBtn" Content="Войти" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Width="124" FontSize="14" IsDefault="True" Click="enterBtn_Click"/>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="152"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" VerticalAlignment="Top" Margin="-2,0,0,0" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Height="5" VerticalAlignment="Top" Margin="135,0,-2,0" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0" Grid.ColumnSpan="2"/>
+        <Label Content="Логин:" Grid.Column="1" Style="{StaticResource Label}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="144,39,0,0"/>
+        <ComboBox x:Name="loginsComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="236" IsReadOnly="True" FontSize="14" Grid.Column="1" Height="28" Margin="205,41,0,0"/>
+        <Label Content="Пароль:" Grid.Column="1" Style="{StaticResource Label}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="135,83,0,0"/>
+        <PasswordBox x:Name="passTxt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="236" FontSize="14" Height="29" Grid.Column="1" Margin="205,83,0,0"/>
+        <Button x:Name="enterBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" IsDefault="True" Click="enterBtn_Click" Grid.Column="1" Style="{StaticResource EnterButton}" Margin="291,120,0,0"/>
+        <Image HorizontalAlignment="Left" Height="112" VerticalAlignment="Top" Width="198" Grid.ColumnSpan="2" Margin="40,40,0,0" Source="/Resources/Images/Logo_b.png"/>
     </Grid>
 </Window>

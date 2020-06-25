@@ -7,23 +7,29 @@
         mc:Ignorable="d"
         Title="NewCarwashOrderWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <DockPanel LastChildFill="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2,0,0,-3" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-35,0,-2,-5" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <DockPanel LastChildFill="True" Grid.ColumnSpan="2">
             <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#FFE4E4E4">
                 <StackPanel DockPanel.Dock="Left" VerticalAlignment="Stretch" HorizontalAlignment="Left" Orientation="Horizontal">
-                    <Label FontSize="14" FontWeight="Bold" Content="Сумма заказа:" VerticalContentAlignment="Center" Margin="16,0,0,0"/>
+                    <Label Style="{StaticResource Label}" FontWeight="Bold" Content="Сумма заказа:" VerticalContentAlignment="Center" Margin="16,0,0,0"/>
                     <Label x:Name="wholeSumLbl" FontSize="14" Content="0 руб." VerticalContentAlignment="Center" Margin="8,0,0,0"/>
-                    <Label Content="Тип оплаты:" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Margin="20,0,0,0"/>
+                    <Label Content="Тип оплаты:" Style="{StaticResource Label}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Margin="20,0,0,0"/>
                     <ComboBox x:Name="moneyList" FontSize="14" Height="26" Width="180" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="10,0,0,0"/>
                 </StackPanel>
-                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Right" FlowDirection="RightToLeft" Orientation="Horizontal">
-                    <Button Content="Отмена" FontSize="14" HorizontalAlignment="Left" Height="30" Width="120" IsCancel="True" Margin="16,10,20,10"/>
-                    <Button x:Name="addOrderBtn" Content="Добавить заказ" FontSize="14" Width="120" Height="30" IsDefault="True" Click="addOrderBtn_Click"/>
+                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button x:Name="addOrderBtn" Style="{StaticResource AddOrderButton}" Width="120" Height="30" IsDefault="True" Click="addOrderBtn_Click"/>
+                    <Button Style="{StaticResource CancelButton}" HorizontalAlignment="Left" Height="30" Width="120" IsCancel="True" Margin="16,10,20,10"/>                    
                 </StackPanel>
             </DockPanel>
             <ScrollViewer>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid Height="250">
-                        <GroupBox Header="Информация о клиенте" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
+                        <GroupBox Header="Информация о клиенте" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5" Style="{StaticResource GroupBoxStyle}">
                             <Grid x:Name="mainGrid">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -46,25 +52,25 @@
                                 </StackPanel>
                                 <Label x:Name="nameLbl" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
                                 <TextBox x:Name="nameTxt" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0"/>
-                                <Label Content="Телефон:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+                                <Label Content="Телефон:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
                                 <TextBox x:Name="phoneTxt" Grid.Row="2" Grid.Column="1" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0" VerticalContentAlignment="Center" PreviewTextInput="phoneTxt_PreviewTextInput"/>
-                                <Label Content="E-mail:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
+                                <Label Content="E-mail:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
                                 <TextBox x:Name="mailTxt" Grid.Row="3" Grid.Column="1" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0" VerticalContentAlignment="Center"/>
-                                <Label Content="Марка авто:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
+                                <Label Content="Марка авто:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
                                 <ComboBox x:Name="brandsList" Grid.Row="4" Grid.Column="1" Margin="10,5,5,0" HorizontalAlignment="Stretch" SelectionChanged="brandsList_SelectionChanged"/>
-                                <Label Content="Модель авто:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
+                                <Label Content="Модель авто:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
                                 <ComboBox x:Name="modelsList" Grid.Row="5" Grid.Column="1" Margin="10,5,5,0" HorizontalAlignment="Stretch" SelectionChanged="modelsList_SelectionChanged"/>
-                                <Label Content="Гос.номер:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"/>
+                                <Label Content="Гос.номер:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"/>
                                 <TextBox x:Name="licencePlateTxt" Grid.Row="6" Grid.Column="1" FontSize="14" HorizontalAlignment="Stretch" Margin="10,2,5,0" VerticalContentAlignment="Center"/>
-                                <Label x:Name="groupLbl" Content="Группа клиентов:" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <Label x:Name="groupLbl" Style="{StaticResource Label}" Content="Группа клиентов:" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                                 <ComboBox x:Name="groupsList" Grid.Row="3" Grid.Column="3" Margin="10,5,5,0" HorizontalAlignment="Stretch"/>
-                                <Label Content="Бокс:" FontSize="14" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <Label Content="Бокс:" Style="{StaticResource Label}" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                                 <ComboBox x:Name="boxList" FontSize="14" Grid.Row="5" Grid.Column="3" Margin="10,5,5,0" HorizontalAlignment="Stretch"/>
                             </Grid>
                         </GroupBox>
                     </Grid>
                     <Grid Height="220">
-                        <GroupBox Header="Работники" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
+                        <GroupBox Header="Работники" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5" Style="{StaticResource GroupBoxStyle}">
                             <Grid x:Name="workersGrid">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.12*"/>
@@ -75,18 +81,18 @@
                                     <RowDefinition Height="34"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <Label Content="Выбрано:" Grid.Row="1" Grid.Column="0" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-                                <Label x:Name="workersNumLbl" Grid.Row="1" Grid.Column="1" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="0"/>                                
+                                <Label Content="Выбрано:" Grid.Row="1" Grid.Column="0" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                <Label x:Name="workersNumLbl" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="0"/>                                
                                 <WrapPanel x:Name="workersPanel" Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="2"/>                                
                             </Grid>
                         </GroupBox>
                     </Grid>
                     <Grid Height="350">
-                        <GroupBox Header="Услуги" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
+                        <GroupBox Header="Услуги" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5" Style="{StaticResource GroupBoxStyle}">
                             <DockPanel x:Name="servicesMainPanel" LastChildFill="True">
                                 <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top" LastChildFill="True">
                                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Margin="0,15,0,0">
-                                        <Label Content="Категория услуг:" Margin="16,0,0,0"/>
+                                        <Label Content="Категория услуг:" Style="{StaticResource Label}" Margin="16,0,0,0"/>
                                         <ComboBox x:Name="serviceTypesList" Width="200" Margin="20,0,0,0" SelectionChanged="serviceTypesList_SelectionChanged"/>
                                     </StackPanel>
                                     <Grid>
@@ -94,8 +100,8 @@
                                             <ColumnDefinition Width="1.7*"/>
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Content="Сумма:" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                                        <Label x:Name="serviceSumLbl" Grid.Column="1" FontSize="14" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                                        <Label Content="Сумма:" Style="{StaticResource Label}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <Label x:Name="serviceSumLbl" Grid.Column="1" Style="{StaticResource Label}" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                                     </Grid>
                                 </DockPanel>
                                 <ScrollViewer VerticalScrollBarVisibility="Auto" DockPanel.Dock="Bottom" Margin="0,10,0,0">
@@ -105,7 +111,7 @@
                         </GroupBox>
                     </Grid>
                     <Grid Height="200">
-                        <GroupBox Header="Дополнительно" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5">
+                        <GroupBox Header="Дополнительно" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="16,5,5,5" Style="{StaticResource GroupBoxStyle}">
                             <Grid x:Name="additionalGrid">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -116,10 +122,10 @@
                                     <RowDefinition Height="0.25*"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <Label Content="Размер скидки:" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-                                <Label x:Name="discountValuelbl" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-50,0,0,0" Grid.Column="1" Content="0%"/>
+                                <Label Content="Размер скидки:" Style="{StaticResource Label}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                                <Label x:Name="discountValuelbl" Style="{StaticResource Label}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-50,0,0,0" Grid.Column="1" Content="0%"/>
                                 <Slider x:Name="discountSlider" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10" Minimum="0" Maximum="100" Value="0" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" ValueChanged="discountSlider_ValueChanged"/>
-                                <Label Content="Комментарий: " FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Column="2"/>
+                                <Label Content="Комментарий: " Style="{StaticResource Label}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Column="2"/>
                                 <TextBox x:Name="commentTxt" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10" Grid.Row="1" Grid.Column="2"/>                                
                             </Grid>                            
                         </GroupBox>

@@ -7,24 +7,28 @@
         mc:Ignorable="d"
         Title="ServicesDictWindow" Height="600" Width="850" WindowStartupLocation="CenterOwner">
     <Grid>
-        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2,0,0,-3" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-35,0,-2,-5" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True" Grid.ColumnSpan="2">
             <Grid Height="40" DockPanel.Dock="Top" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width='160'/>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="67"/>
+                    <ColumnDefinition Width="203"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Категория:" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Column="0"/>
-                <ComboBox x:Name="typesList" FontSize="14" VerticalAlignment="Bottom" Width="150" Margin="10,0,0,0" Grid.Column="1" SelectionChanged="typesList_SelectionChanged"/>
-                <Label Content="Услуга" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Column="2"/>
-                <ComboBox x:Name="servicesList" FontSize="14" VerticalAlignment="Bottom" Width="200" Margin="10,0,0,0" Grid.Column="3" SelectionChanged="servicesList_SelectionChanged"/>
-                <StackPanel Grid.Column="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" FlowDirection="RightToLeft">
-                    <Button Name="exportBtn" Content="EXP" FontSize="14" VerticalAlignment="Bottom" Height="30" Width="30" Margin="10,0,0,0"/>
-                    <Button Name="importBtn" Content="IMP" FontSize="14" VerticalAlignment="Bottom" Height="30" Width="30" Margin="10,0,0,0"/>
-                    <Button Name="addTypeBtn" Content="ADT" FontSize="14" VerticalAlignment="Bottom" Height="30" Width="30" Margin="10,0,0,0" Click="addTypeBtn_Click"/>
-                    <Button Name="addServiceBtn" Content="ADS" FontSize="14" VerticalAlignment="Bottom" Height="30" Width="30" Margin="10,0,0,0" Click="addServiceBtn_Click"/>
+                <Label Content="Категория:" Style="{StaticResource Label}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,11,0,0" />
+                <ComboBox x:Name="typesList" FontSize="14" VerticalAlignment="Bottom" Margin="10,0,0,0" Grid.Column="1" SelectionChanged="typesList_SelectionChanged" Height="25"/>
+                <Label Content="Услуга:" Style="{StaticResource Label}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Column="2"/>
+                <ComboBox x:Name="servicesList" FontSize="14" VerticalAlignment="Bottom" Margin="10,0,318,0" Grid.Column="3" SelectionChanged="servicesList_SelectionChanged" Grid.ColumnSpan="2" Height="25"/>
+                <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">                    
+                    <Button Name="addTypeBtn" Content="Новый тип услуг" Style="{StaticResource SimpleTextButton}" VerticalAlignment="Bottom" Width="130" Margin="10,0,0,0" Click="addTypeBtn_Click"/>
+                    <Button Name="addServiceBtn" Content="Новая услуга" Style="{StaticResource SimpleTextButton}" VerticalAlignment="Bottom" Width="130" Margin="10,0,0,0" Click="addServiceBtn_Click"/>
                 </StackPanel>
             </Grid>
             <Grid x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
@@ -41,18 +45,18 @@
                     <ColumnDefinition Width="0.55*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Название услуги:" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1"/>
+                <Label Content="Название услуги:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1"/>
                 <TextBlock x:Name="nameTxt" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Margin="10,5,0,0"/>
-                <Label Content="Длительность:" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2"/>
+                <Label Content="Длительность:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2"/>
                 <TextBlock x:Name="durationTxt" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Margin="10,5,0,0"/>
-                <Label Content="Категория:" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="0" Grid.Row="3"/>
+                <Label Content="Категория:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="0" Grid.Row="3"/>
                 <TextBlock x:Name="categoryTxt" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" Margin="10,5,0,0"/>
-                <Label Content="Описание:" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1"/>
+                <Label Content="Описание:" Style="{StaticResource Label}" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1"/>
                 <TextBlock x:Name="descrTxt" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="1" Grid.RowSpan="3" Margin="10,5,0,0"/>
                 <DockPanel Grid.Row="4" Grid.ColumnSpan="4" LastChildFill="True">
-                    <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
-                        <Button x:Name="deleteServiceBtn" Width="120" Content="Удалить" Height="30" FontSize="14" Click="deleteServiceBtn_Click"/>
-                        <Button x:Name="updateServiceBtn" Width="120" Content="Изменить" Margin="10,0,0,0" FontSize="14" Click="updateServiceBtn_Click"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
+                        <Button x:Name="updateServiceBtn" Width="150" Style="{StaticResource EditButton}" Click="updateServiceBtn_Click"/>
+                        <Button x:Name="deleteServiceBtn" Width="150" Style="{StaticResource DeleteButton}" Margin="10,0,0,0" Click="deleteServiceBtn_Click"/>                        
                     </StackPanel>
                     <WrapPanel x:Name="pricesPanel" Orientation="Vertical" Background="#FFD8D8D8" Margin="0,0,0,10"/>
                 </DockPanel>

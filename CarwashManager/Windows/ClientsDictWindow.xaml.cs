@@ -33,15 +33,8 @@ namespace CarwashManager.Windows
 
             SetWindowBackGround();
             SetWindowTitle();
-            SetFontSize();
 
             RefreshGroupsList();
-        }
-
-        public void SetFontSize()
-        {
-            for (int i = 0; i < mainGrid.Children.Count; i++)
-                ((Control)mainGrid.Children[i]).FontSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["MainFontSize"]);
         }
 
         public void SetWindowBackGround()

@@ -138,6 +138,9 @@
   <data name="MainWindowName" xml:space="preserve">
     <value>Carwash Manager</value>
   </data>
+  <data name="NewBoxLabelText" xml:space="preserve">
+    <value>Добавление нового бокса</value>
+  </data>
   <data name="NewBoxWindowName" xml:space="preserve">
     <value>Новый бокс</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="ServicesDictWindowName" xml:space="preserve">
     <value>Каталог услуг</value>
+  </data>
+  <data name="UpdateBoxLabelText" xml:space="preserve">
+    <value>Редактирование информации о боксе</value>
   </data>
   <data name="UpdateBoxWindowName" xml:space="preserve">
     <value>Редактирование бокса</value>

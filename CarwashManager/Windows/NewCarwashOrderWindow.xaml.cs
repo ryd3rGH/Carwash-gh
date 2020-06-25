@@ -831,8 +831,8 @@ namespace CarwashManager.Windows
 
             if (OrderToUpdate != null)
             {
-                addOrderBtn.Content = "Сохранить";
                 groupsList.IsEnabled = false;
+                addOrderBtn.Style = this.FindResource("SaveButton") as Style;
             }
 
             LockUnlockUI(true);

@@ -34,6 +34,11 @@ namespace CarwashManager.Windows
             SetWindowBackGround();
             SetWindowTitle();
             LoadMoneyTypes();
+
+            if (IsWithdraw)            
+                addBtn.Style = this.FindResource("RemoveMoneyButton") as Style;            
+            else            
+                addBtn.Style = this.FindResource("AddMoneyButton") as Style;            
         }
 
         public void SetWindowBackGround()

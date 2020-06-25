@@ -10,6 +10,9 @@
     <Compile Update="Controls\BoxControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\BoxModControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\CashboxOperationControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\NewEntityClientControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\NewOrderLineControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\NewPhysClientControl.xaml.cs">
@@ -61,10 +67,16 @@
     <Compile Update="Windows\ClientsDictWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\CWMainWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\LaunchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\NewBoxModWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\NewBoxWindow.xaml.cs">
@@ -111,6 +123,9 @@
     <Page Update="Controls\BoxControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\BoxModControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\CashboxOperationControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -135,6 +150,9 @@
     <Page Update="Controls\NewEntityClientControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\NewOrderLineControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\NewPhysClientControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -156,6 +174,24 @@
     <Page Update="SettingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\DifferentControls.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\InvisibleRectagleStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\LabelTextStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\RectangleStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\RoundButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\WinButtonsStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\CarDictWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -165,10 +201,16 @@
     <Page Update="Windows\ClientsDictWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Windows\CWMainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\LaunchWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\NewBoxModWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\NewBoxWindow.xaml">

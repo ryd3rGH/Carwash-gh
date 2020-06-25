@@ -14,11 +14,17 @@
             <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Label Content="Введите или выберите г/н авто клиента:" FontSize="14" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-        <ComboBox Name="licencePlatesList" FontSize="14" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,10,0,0" IsEditable="True"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <Button Name="goToOrderBtn" Content="Далее" FontSize="14" Height="30" Width="120" IsDefault="True" Margin="50,0,10,0" Click="goToOrderBtn_Click"/>
-            <Button Content="Отмена" IsCancel="True" FontSize="14" Height="30" Width="120"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2,0,0,-3" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-35,0,-2,-5" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Label Content="Введите или выберите г/н авто клиента:" Style="{StaticResource Label}" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.ColumnSpan="2"/>
+        <ComboBox Name="licencePlatesList" FontSize="14" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,10,0,0" IsEditable="True" Grid.ColumnSpan="2"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2">
+            <Button Name="goToOrderBtn" Style="{StaticResource NextButton}" Width="120" IsDefault="True" Margin="50,0,10,0" Click="goToOrderBtn_Click"/>
+            <Button IsCancel="True" Style="{StaticResource CancelButton}" Width="120"/>
         </StackPanel>
     </Grid>
 </Window>

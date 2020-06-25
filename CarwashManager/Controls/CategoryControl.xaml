@@ -17,8 +17,8 @@
         </Rectangle>
         <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">            
             <DockPanel DockPanel.Dock="Right" Width="40" HorizontalAlignment="Right">
-                <Button x:Name="updateBtn" DockPanel.Dock="Top" Margin="5,3,5,3" Height="30" Content="UPD" Click="updateBtn_Click"></Button>
-                <Button x:Name="delBtn" DockPanel.Dock="Bottom" Margin="5,0,5,3" Content="DEL" Click="delBtn_Click"></Button>
+                <Button x:Name="updateBtn" DockPanel.Dock="Top" Margin="5,2,5,1" Style="{StaticResource EditSmallButton}" Click="updateBtn_Click"></Button>
+                <Button x:Name="delBtn" DockPanel.Dock="Bottom" Margin="5,0,5,1.5" Style="{StaticResource DeleteSmallButton}" Click="delBtn_Click"></Button>
             </DockPanel>
             <Label x:Name="catNameLbl" HorizontalAlignment="Stretch" VerticalAlignment="Top" DockPanel.Dock="Top" Height="32"></Label>
             <Label Height="32" DockPanel.Dock="Left" Content="Классы:" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,5,5"></Label>

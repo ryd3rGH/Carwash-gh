@@ -26,37 +26,37 @@
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Название:" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Название:" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientNameTxt" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" VerticalAlignment="Stretch" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="2" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Телефон:" Grid.Row="2" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientPhoneTxt" Grid.Row="2" Grid.Column="1" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Юр. адрес:" Grid.Row="3" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Юр. адрес:" Grid.Row="3" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientLATxt" Grid.Row="3" Grid.Column="1" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Факт. адрес:" Grid.Row="4" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Факт. адрес:" Grid.Row="4" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientFATxt" Grid.Row="4" Grid.Column="1" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="ИНН:" Grid.Row="2" Grid.Column="2"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="ИНН:" Grid.Row="2" Grid.Column="2" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientInnTxt" Grid.Row="2" Grid.Column="3" FontSize="14" VerticalAlignment="Top" Margin="10,5,10,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="ОГРН:" Grid.Row="3" Grid.Column="2"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="ОГРН:" Grid.Row="3" Grid.Column="2" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientOgrnTxt" Grid.Row="3" Grid.Column="3" FontSize="14" VerticalAlignment="Top" Margin="10,5,10,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Р/счет:" Grid.Row="5" Grid.Column="0" />
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Р/счет:" Grid.Row="5" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientRSTxt" Grid.Row="5" Grid.Column="1" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Корр. счет:" Grid.Row="5" Grid.Column="2"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Корр. счет:" Grid.Row="5" Grid.Column="2" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientKSTxt" Grid.Row="5" Grid.Column="3" FontSize="14" VerticalAlignment="Top" Margin="10,5,10,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="БИК:" Grid.Row="6" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="БИК:" Grid.Row="6" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientBikTxt" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" FontSize="14" VerticalAlignment="Top" Margin="10,5,10,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Директор:" Grid.Row="7" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Директор:" Grid.Row="7" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientDirTxt" Grid.Row="7" Grid.Column="1" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Глав. бух.:" Grid.Row="7" Grid.Column="2"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Глав. бух.:" Grid.Row="7" Grid.Column="2" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientGbTxt" Grid.Row="7" Grid.Column="3" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Конт. лицо:" Grid.Row="8" Grid.Column="0" />
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Конт. лицо:" Grid.Row="8" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientKLTxt" Grid.Row="8" Grid.Column="1" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Телефон:" Grid.Row="8" Grid.Column="2"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Телефон:" Grid.Row="8" Grid.Column="2" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientKLPhoneTxt" Grid.Row="8" Grid.Column="3" FontSize="14" VerticalAlignment="Top" Margin="10,5,0,5"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Content="Автомобили:" Grid.Row="9" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Автомобили:" Grid.Row="9" Grid.Column="0" Style="{StaticResource Label}"/>
         <TextBlock x:Name="clientCarsTxt" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" FontSize="14" VerticalAlignment="Stretch" Margin="10,5,10,0" TextWrapping="Wrap"/>
-        <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Height="33" VerticalAlignment="Top" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" Orientation="Horizontal">
-            <Button x:Name="deleteClientBtn" Width="30" Content="DEL" FontSize="12" Margin="0,2,5,3" Click="deleteClientBtn_Click"/>
-            <Button x:Name="updateClientBtn" Width="30" Content="UPD" FontSize="12" Margin="10,2,5,3" Click="updateClientBtn_Click"/>
+        <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button x:Name="updateClientBtn" Style="{StaticResource EditSmallButton}" FontSize="12" Margin="10,2,5,0" Click="updateClientBtn_Click"/>
+            <Button x:Name="deleteClientBtn" Style="{StaticResource DeleteSmallButton}" FontSize="12" Margin="0,2,0,0" Click="deleteClientBtn_Click"/>            
         </StackPanel>
     </Grid>
 </UserControl>

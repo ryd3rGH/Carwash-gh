@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarwashManager.Windows"
         mc:Ignorable="d"
-        Title="LaunchWindow" Height="350" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="LaunchWindow" Height="350" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid x:Name="mainGrid">
         <Label x:Name="loadingLbl" Content="" HorizontalAlignment="Center" Margin="0,245,0,15" VerticalAlignment="Bottom" FontFamily="Century" FontSize="16"/>
+        <Image HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="410" Margin="45,40,0,0" Source="/Resources/Images/Logo_b.png"/>
 
     </Grid>
 </Window>

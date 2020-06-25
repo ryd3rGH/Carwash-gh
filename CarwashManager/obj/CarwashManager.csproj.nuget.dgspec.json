@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj": {}
+    "D:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj": {}
   },
   "projects": {
-    "G:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj": {
+    "D:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj": {
       "version": "0.0.1",
       "restore": {
-        "projectUniqueName": "G:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj",
+        "projectUniqueName": "D:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj",
         "projectName": "CarwashManager",
-        "projectPath": "G:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj",
+        "projectPath": "D:\\db\\CSharpCodeProjects\\CarwashManager\\CarwashManager.csproj",
         "packagesPath": "C:\\Users\\Fridayff.EDUCATION\\.nuget\\packages\\",
-        "outputPath": "G:\\db\\CSharpCodeProjects\\CarwashManager\\obj\\",
+        "outputPath": "D:\\db\\CSharpCodeProjects\\CarwashManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "G:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj": {
-                "projectPath": "G:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj"
+              "D:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj": {
+                "projectPath": "D:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "G:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj": {
+    "D:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj": {
       "version": "0.0.1",
       "restore": {
-        "projectUniqueName": "G:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj",
+        "projectUniqueName": "D:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj",
         "projectName": "CWLib",
-        "projectPath": "G:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj",
+        "projectPath": "D:\\db\\CSharpCodeProjects\\CWLib\\CWLib.csproj",
         "packagesPath": "C:\\Users\\Fridayff.EDUCATION\\.nuget\\packages\\",
-        "outputPath": "G:\\db\\CSharpCodeProjects\\CWLib\\obj\\",
+        "outputPath": "D:\\db\\CSharpCodeProjects\\CWLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

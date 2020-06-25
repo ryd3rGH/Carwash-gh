@@ -7,15 +7,21 @@
         mc:Ignorable="d"
         Title="WorkersDictWindow" Height="600" Width="850" WindowStartupLocation="CenterOwner">
     <Grid>
-        <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,15,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2,0,0,-3" Fill="#FF8BD692" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-35,0,-2,-5" Fill="#FF4995BF" RadiusX="3" RadiusY="3" StrokeThickness="0"/>
+        <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,15,0,0" Grid.ColumnSpan="2">
             <DockPanel DockPanel.Dock="Top">
                 <StackPanel Height="40" DockPanel.Dock="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                    <Label Content="Группа:" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Label Content="Группа:" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource Label}"/>
                     <ComboBox x:Name="groupList" Margin="10,8,0,6" Width="160" SelectionChanged="groupList_SelectionChanged" FontSize="14"/>
-                    <Label Content="Работник:" Margin="25,0,0,0" FontSize="14" VerticalAlignment="Center"/>
+                    <Label Content="Работник:" Margin="25,0,0,0" FontSize="14" VerticalAlignment="Center" Style="{StaticResource Label}"/>
                     <ComboBox x:Name="workersList" Margin="10,8,0,6" Width="250" FontSize="14" SelectionChanged="workersList_SelectionChanged"/>
                 </StackPanel>
-                <Button x:Name="addWorkerBtn" Margin="24,5,10,5" FontSize="14" MinWidth="190" MaxWidth="225" Content="Добавить нового работника" HorizontalAlignment="Right" Click="addWorkerBtn_Click"/>
+                <Button x:Name="addWorkerBtn" Margin="24,5,10,5" Style="{StaticResource AddWorkerButton}" MinWidth="190" MaxWidth="225" HorizontalAlignment="Right" Click="addWorkerBtn_Click"/>
             </DockPanel>
             <Grid x:Name="contentPanel" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,10,10,10"/>
         </DockPanel>
